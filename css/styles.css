@@ -1488,24 +1488,24 @@ h1, h2, h3, h4 {
   .hero { padding: 88px 0 60px; min-height: auto; }
   .hero-label { margin-bottom: 18px; }
   .hero-title {
-    font-size: clamp(1.85rem, 7vw, 2.6rem);
-    line-height: 1.06;
+    font-size: clamp(2.5rem, 9.5vw, 3.4rem);
+    line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 20px;
   }
   .hero-rule { width: 40px; margin-bottom: 18px; }
-  .hero-sub { font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; max-width: 100%; }
+  .hero-sub { font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; max-width: 100%; }
   .hero-visual { display: none; }
   .hero-diagonal { display: none; }
-  .hero-actions { flex-direction: column; gap: 10px; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-actions { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .hero-actions .btn { width: auto; min-width: 200px; justify-content: center; }
   .hero-scroll-hint { display: none; }
 
   /* ── Inner page hero ── */
   .page-hero { padding: 88px 0 40px; }
   .page-hero .label { margin-bottom: 14px; }
   .page-hero h1 {
-    font-size: clamp(1.65rem, 6vw, 2.3rem);
+    font-size: clamp(2rem, 7.5vw, 2.8rem);
     line-height: 1.08;
     letter-spacing: -0.03em;
     margin-bottom: 16px;
@@ -1527,7 +1527,7 @@ h1, h2, h3, h4 {
 
   /* ── Services section ── */
   .services-section { padding: 52px 0; }
-  .services-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .service-card { padding: 36px 28px; }
 
   /* ── Case studies ── */
@@ -1548,7 +1548,7 @@ h1, h2, h3, h4 {
 
   /* ── Process ── */
   .process-section { padding: 52px 0; }
-  .process-grid { grid-template-columns: 1fr; margin-top: 40px; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 40px; }
   .process-step { padding: 36px 28px; }
   .process-step-num { font-size: 3rem; margin-bottom: 16px; }
   .process-step-icon { top: 28px; right: 24px; }
@@ -1610,7 +1610,7 @@ h1, h2, h3, h4 {
   .about-intro { padding: 52px 0; gap: 40px; }
   .about-intro h2 { font-size: clamp(1.5rem, 5.5vw, 2rem); margin-bottom: 20px; }
   .about-values { padding: 52px 0; }
-  .about-values-grid { grid-template-columns: 1fr; margin-top: 36px; }
+  .about-values-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 36px; }
   .value-card { padding: 32px 24px; }
 
   /* ── Services full page ── */
@@ -1656,7 +1656,8 @@ h1, h2, h3, h4 {
   /* Hero — tighten further */
   .hero { padding: 80px 0 52px; }
   .hero-title {
-    font-size: clamp(1.7rem, 6.5vw, 2.2rem);
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    line-height: 1.05;
     letter-spacing: -0.025em;
   }
   .hero-sub { font-size: 0.875rem; margin-bottom: 24px; }
@@ -1664,15 +1665,15 @@ h1, h2, h3, h4 {
 
   /* Inner page hero */
   .page-hero { padding: 80px 0 36px; }
-  .page-hero h1 { font-size: clamp(1.5rem, 6.5vw, 2rem); }
+  .page-hero h1 { font-size: clamp(1.85rem, 7.5vw, 2.5rem); }
 
   /* Section headings */
   .section-title { font-size: clamp(1.35rem, 5.5vw, 1.9rem); }
   .section { padding: 44px 0; }
   .section-header { margin-bottom: 28px; }
 
-  /* Stats — 1-col on very small */
-  .results-grid { grid-template-columns: 1fr; }
+  /* Stats — keep 2-col even on very small phones */
+  .results-grid { grid-template-columns: repeat(2, 1fr); }
   .result-item { padding: 28px 20px; }
   .result-num { font-size: clamp(1.9rem, 7.5vw, 2.4rem); }
 
