@@ -1448,68 +1448,291 @@ h1, h2, h3, h4 {
   .about-intro { grid-template-columns: 1fr; gap: 40px; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .services-full-grid { grid-template-columns: 1fr; }
+  /* Tablet: tighten hero */
+  .hero { padding: 120px 0 80px; }
+  .hero-title { font-size: clamp(2.2rem, 4.5vw, 4rem); }
+  .cta-section { padding: 100px 0; }
+  .result-item { padding: 40px 32px; }
 }
+
 @media (max-width: 768px) {
   /* ── Layout ── */
   .container { padding: 0 20px; }
-  .nav-inner { padding: 0 20px; height: 70px; }
+  .section { padding: 56px 0; }
+
+  /* ── Nav ── */
+  .nav-inner { padding: 0 20px; height: 64px; }
   .nav-links, .nav-cta { display: none; }
-  .nav-toggle { display: flex; }
+  .nav-toggle {
+    display: flex;
+    /* Larger tap target: 44×44 minimum */
+    padding: 10px 8px;
+    margin-left: auto;
+  }
+  /* Mobile menu top offset matches nav height */
+  .mobile-menu { top: 64px; }
+  .mobile-nav-links a {
+    font-size: 1.55rem;
+    padding: 18px 0;
+    /* Ensure 44px+ touch height */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
 
   /* ── Buttons ── */
-  .btn { padding: 12px 22px; font-size: 0.78rem; }
-  .btn-lg { padding: 14px 28px; font-size: 0.8rem; }
+  .btn { padding: 13px 22px; font-size: 0.78rem; min-height: 44px; }
+  .btn-lg { padding: 15px 28px; font-size: 0.8rem; min-height: 48px; }
 
   /* ── Hero ── */
-  .hero { padding: 90px 0 64px; min-height: auto; }
-  .hero-title { font-size: clamp(1.9rem, 7.5vw, 2.8rem); line-height: 1.05; margin-bottom: 24px; }
-  .hero-sub { font-size: 0.92rem; line-height: 1.7; margin-bottom: 32px; }
-  .hero-rule { width: 48px; margin-bottom: 20px; }
+  .hero { padding: 88px 0 60px; min-height: auto; }
+  .hero-label { margin-bottom: 18px; }
+  .hero-title {
+    font-size: clamp(1.85rem, 7vw, 2.6rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  .hero-rule { width: 40px; margin-bottom: 18px; }
+  .hero-sub { font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; max-width: 100%; }
   .hero-visual { display: none; }
-  .hero-actions { flex-direction: column; gap: 12px; }
+  .hero-diagonal { display: none; }
+  .hero-actions { flex-direction: column; gap: 10px; }
   .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-scroll-hint { display: none; }
 
-  /* ── Typography ── */
-  .section-title { font-size: clamp(1.6rem, 6vw, 2.4rem); }
-  .section-sub { font-size: 0.9rem; }
-  .section-header { margin-bottom: 36px; }
-  .cta-headline { font-size: clamp(1.8rem, 7vw, 2.8rem); }
-  .page-hero h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); }
-  .page-hero { padding: 100px 0 48px; }
+  /* ── Inner page hero ── */
+  .page-hero { padding: 88px 0 40px; }
+  .page-hero .label { margin-bottom: 14px; }
+  .page-hero h1 {
+    font-size: clamp(1.65rem, 6vw, 2.3rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .page-hero p { font-size: 0.9rem; line-height: 1.7; }
 
-  /* ── Section padding ── */
-  .section { padding: 56px 0; }
-  .services-section { padding: 56px 0; }
-  .industries-section { padding: 56px 0; }
-  .process-section { padding: 56px 0; }
-  .case-studies-section { padding: 56px 0; }
+  /* ── Section headings ── */
+  .section-title { font-size: clamp(1.5rem, 5.5vw, 2.2rem); line-height: 1.1; }
+  .section-sub { font-size: 0.875rem; line-height: 1.75; }
+  .section-header { margin-bottom: 32px; }
+  .section-header .label { margin-bottom: 12px; }
 
-  /* ── Grids ── */
-  .results-grid { grid-template-columns: 1fr; }
+  /* ── Results / Stat blocks ── */
+  .results-section { padding: 48px 0; }
+  .results-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+  .result-item { padding: 32px 24px; }
+  .result-num { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .result-label { font-size: 0.78rem; }
+
+  /* ── Services section ── */
+  .services-section { padding: 52px 0; }
   .services-grid { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: 1fr; }
-  .case-study-data { grid-template-columns: 1fr; }
-  .about-values-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 36px 28px; }
+
+  /* ── Case studies ── */
+  .case-studies-section { padding: 52px 0; }
   .case-studies-grid { grid-template-columns: 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+  .cs-card { padding: 36px 28px; }
+  .cs-card.cs-card-coming { padding: 28px; }
+  .cs-arrow { display: none; }
+  .cs-stats-row { gap: 20px; flex-wrap: wrap; padding-bottom: 24px; margin-bottom: 24px; }
+  .cs-stat-val { font-size: 1.7rem; }
+  .cs-client-name { font-size: 1.25rem; margin-bottom: 24px; }
 
   /* ── Industries ── */
+  .industries-section { padding: 52px 0; }
   .industry-tag { padding: 10px 16px; font-size: 0.78rem; }
   .industry-extra { display: none; }
   .industries-show-more { display: flex; }
 
-  /* ── CTA ── */
-  .cta-actions { flex-direction: column; align-items: stretch; gap: 12px; }
-  .cta-actions .btn { justify-content: center; width: 100%; }
+  /* ── Process ── */
+  .process-section { padding: 52px 0; }
+  .process-grid { grid-template-columns: 1fr; margin-top: 40px; }
+  .process-step { padding: 36px 28px; }
+  .process-step-num { font-size: 3rem; margin-bottom: 16px; }
+  .process-step-icon { top: 28px; right: 24px; }
+  .process-step-title { font-size: 1.05rem; }
+  .process-step-desc { font-size: 0.85rem; }
 
-  /* ── Cards & misc ── */
-  .cs-arrow { display: none; }
-  .cs-stats-row { gap: 24px; flex-wrap: wrap; }
-  .testimonial-card, .testimonial-card-cta { padding: 36px 24px; }
-  .trust-item { padding: 6px 24px; }
-  .service-full-card { padding: 36px 24px; }
-  .about-intro-grid { gap: 32px; }
-  .contact-info { padding: 32px 24px; }
+  /* ── Testimonials ── */
+  .testimonials-section { padding: 52px 0; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonial-card { padding: 32px 24px; }
+  .testimonial-card-cta { padding: 32px 24px; }
+  .testimonial-quote { font-size: 0.92rem; line-height: 1.8; margin-bottom: 28px; }
+
+  /* ── FAQ ── */
+  .faq-q {
+    padding: 18px 0;
+    font-size: 0.88rem;
+    gap: 16px;
+    line-height: 1.45;
+  }
+  .faq-q::after { font-size: 1.2rem; }
+  .faq-a { font-size: 0.84rem; padding-bottom: 18px; }
+
+  /* ── CTA section ── */
+  .cta-section { padding: 72px 0; }
+  .cta-headline {
+    font-size: clamp(1.7rem, 6.5vw, 2.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 18px;
+  }
+  .cta-sub { font-size: 0.88rem; margin-bottom: 32px; }
+  .cta-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  .cta-actions .btn { justify-content: center; width: 100%; }
+  .cta-fine { font-size: 0.7rem; margin-top: 16px; }
+
+  /* ── Contact form ── */
+  .contact-section { padding: 52px 0; }
+  .contact-form { padding: 32px 20px; }
+  .contact-info { padding: 0; }
+  .contact-info h2 { font-size: clamp(1.4rem, 5.5vw, 2rem); margin-bottom: 14px; }
+  .contact-info p { margin-bottom: 28px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { font-size: 0.65rem; margin-bottom: 8px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 13px 16px;
+    font-size: 1rem;           /* Prevents iOS zoom on focus (must be >=16px) */
+    min-height: 48px;
+    -webkit-appearance: none;
+  }
+  .form-group textarea { min-height: 110px; }
+  .contact-item { margin-bottom: 20px; padding-bottom: 20px; }
+  .contact-item-icon { width: 36px; height: 36px; flex-shrink: 0; }
+
+  /* ── About page ── */
+  .about-intro { padding: 52px 0; gap: 40px; }
+  .about-intro h2 { font-size: clamp(1.5rem, 5.5vw, 2rem); margin-bottom: 20px; }
+  .about-values { padding: 52px 0; }
+  .about-values-grid { grid-template-columns: 1fr; margin-top: 36px; }
+  .value-card { padding: 32px 24px; }
+
+  /* ── Services full page ── */
+  .service-full-card { padding: 32px 24px; }
+  .service-full-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+  .service-full-card p { font-size: 0.87rem; margin-bottom: 20px; }
+  .service-full-card ul { grid-template-columns: 1fr; gap: 8px; }
+
+  /* ── Trust strip ── */
+  .trust-strip { padding: 14px 0; }
+  .trust-item { padding: 4px 20px; gap: 12px; }
+  .trust-item span { font-size: 0.72rem; letter-spacing: 0.14em; }
+
+  /* ── Footer ── */
+  .footer { padding: 52px 0 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+  .footer-brand { padding-bottom: 0; }
+  .footer-logo-full img { height: 36px; }
+  .footer-tagline { font-size: 0.82rem; max-width: 100%; }
+  .footer-socials { margin-top: 18px; gap: 8px; }
+  .footer-socials a {
+    /* Bump to meet 44px tap target */
+    width: 44px;
+    height: 44px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-top: 24px;
+  }
+  .footer-bottom span { font-size: 0.72rem; }
+}
+
+/* ── 480px and below: very small phones ── */
+@media (max-width: 480px) {
+  /* Container edge breathing room */
+  .container { padding: 0 16px; }
+
+  /* Nav */
+  .nav-inner { padding: 0 16px; }
+
+  /* Hero — tighten further */
+  .hero { padding: 80px 0 52px; }
+  .hero-title {
+    font-size: clamp(1.7rem, 6.5vw, 2.2rem);
+    letter-spacing: -0.025em;
+  }
+  .hero-sub { font-size: 0.875rem; margin-bottom: 24px; }
+  .hero-label { margin-bottom: 14px; }
+
+  /* Inner page hero */
+  .page-hero { padding: 80px 0 36px; }
+  .page-hero h1 { font-size: clamp(1.5rem, 6.5vw, 2rem); }
+
+  /* Section headings */
+  .section-title { font-size: clamp(1.35rem, 5.5vw, 1.9rem); }
+  .section { padding: 44px 0; }
+  .section-header { margin-bottom: 28px; }
+
+  /* Stats — 1-col on very small */
+  .results-grid { grid-template-columns: 1fr; }
+  .result-item { padding: 28px 20px; }
+  .result-num { font-size: clamp(1.9rem, 7.5vw, 2.4rem); }
+
+  /* Case study stats */
+  .cs-stat-val { font-size: 1.5rem; }
+  .cs-stats-row { gap: 16px; }
+
+  /* CTA */
+  .cta-section { padding: 60px 0; }
+  .cta-headline { font-size: clamp(1.5rem, 6.5vw, 2.1rem); }
+  .cta-sub { font-size: 0.85rem; }
+
+  /* FAQ */
+  .faq-q { font-size: 0.85rem; padding: 16px 0; }
+  .faq-a { font-size: 0.82rem; }
+
+  /* Process */
+  .process-section { padding: 44px 0; }
+  .process-step { padding: 28px 20px; }
+  .process-step-num { font-size: 2.6rem; }
+
+  /* Service cards */
+  .service-card { padding: 28px 20px; }
+  .service-full-card { padding: 28px 20px; }
+  .service-name { font-size: 1.1rem; }
+
+  /* Testimonials */
+  .testimonials-section { padding: 44px 0; }
+  .testimonial-card, .testimonial-card-cta { padding: 28px 20px; }
+  .testimonial-quote { font-size: 0.88rem; }
+
+  /* Case studies */
+  .case-studies-section { padding: 44px 0; }
+  .cs-card { padding: 28px 20px; }
+  .cs-card.cs-card-coming { padding: 24px 20px; }
+
+  /* Contact form */
+  .contact-section { padding: 44px 0; }
+  .contact-form { padding: 24px 16px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea { padding: 12px 14px; }
+
+  /* Industries */
+  .industries-section { padding: 44px 0; }
+  .industry-tag { padding: 9px 14px; font-size: 0.75rem; }
+
+  /* About */
+  .about-intro { padding: 44px 0; }
+  .about-values { padding: 44px 0; }
+  .value-card { padding: 24px 20px; }
+
+  /* Footer */
+  .footer { padding: 44px 0 28px; }
+  .footer-grid { gap: 28px; }
+  .footer-socials a { width: 44px; height: 44px; }
+
+  /* Trust strip */
+  .trust-item span { font-size: 0.68rem; }
+
+  /* Buttons */
+  .btn-lg { padding: 14px 24px; font-size: 0.78rem; }
 }
