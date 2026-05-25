@@ -1458,7 +1458,7 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   /* ── Layout ── */
   .container { padding: 0 20px; }
-  .section { padding: 56px 0; }
+  .section { padding: 48px 0; }
 
   /* ── Nav ── */
   .nav-inner { padding: 0 20px; height: 64px; }
@@ -1485,19 +1485,22 @@ h1, h2, h3, h4 {
   .btn-lg { padding: 15px 28px; font-size: 0.8rem; min-height: 48px; }
 
   /* ── Hero ── */
-  .hero { padding: 88px 0 60px; min-height: auto; }
+  .hero { padding: 80px 0 52px; min-height: auto; }
   .hero-label { margin-bottom: 18px; }
+  .hero-content { text-align: center; align-items: center; }
+  .hero .label { text-align: center; }
   .hero-title {
-    font-size: clamp(2.5rem, 9.5vw, 3.4rem);
-    line-height: 1.05;
+    font-size: clamp(2.6rem, 10vw, 3.6rem);
+    line-height: 1.04;
     letter-spacing: -0.03em;
     margin-bottom: 20px;
+    text-align: center;
   }
-  .hero-rule { width: 40px; margin-bottom: 18px; }
-  .hero-sub { font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; max-width: 100%; }
+  .hero-rule { width: 40px; margin-bottom: 18px; margin-left: auto; margin-right: auto; }
+  .hero-sub { font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; max-width: 100%; text-align: center; }
   .hero-visual { display: none; }
   .hero-diagonal { display: none; }
-  .hero-actions { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .hero-actions { flex-direction: column; gap: 10px; align-items: center; }
   .hero-actions .btn { width: auto; min-width: 200px; justify-content: center; }
   .hero-scroll-hint { display: none; }
 
@@ -1505,7 +1508,7 @@ h1, h2, h3, h4 {
   .page-hero { padding: 88px 0 40px; }
   .page-hero .label { margin-bottom: 14px; }
   .page-hero h1 {
-    font-size: clamp(2rem, 7.5vw, 2.8rem);
+    font-size: clamp(2.1rem, 8vw, 2.9rem);
     line-height: 1.08;
     letter-spacing: -0.03em;
     margin-bottom: 16px;
@@ -1513,9 +1516,9 @@ h1, h2, h3, h4 {
   .page-hero p { font-size: 0.9rem; line-height: 1.7; }
 
   /* ── Section headings ── */
-  .section-title { font-size: clamp(1.5rem, 5.5vw, 2.2rem); line-height: 1.1; }
+  .section-title { font-size: clamp(1.85rem, 6.5vw, 2.6rem); line-height: 1.1; }
   .section-sub { font-size: 0.875rem; line-height: 1.75; }
-  .section-header { margin-bottom: 32px; }
+  .section-header { margin-bottom: 28px; }
   .section-header .label { margin-bottom: 12px; }
 
   /* ── Results / Stat blocks ── */
@@ -1526,12 +1529,12 @@ h1, h2, h3, h4 {
   .result-label { font-size: 0.78rem; }
 
   /* ── Services section ── */
-  .services-section { padding: 52px 0; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .service-card { padding: 36px 28px; }
+  .services-section { padding: 48px 0; }
+  .services-grid { grid-template-columns: 1fr; gap: 12px; }
+  .service-card { padding: 24px 20px; }
 
   /* ── Case studies ── */
-  .case-studies-section { padding: 52px 0; }
+  .case-studies-section { padding: 48px 0; }
   .case-studies-grid { grid-template-columns: 1fr; }
   .cs-card { padding: 36px 28px; }
   .cs-card.cs-card-coming { padding: 28px; }
@@ -1541,15 +1544,15 @@ h1, h2, h3, h4 {
   .cs-client-name { font-size: 1.25rem; margin-bottom: 24px; }
 
   /* ── Industries ── */
-  .industries-section { padding: 52px 0; }
+  .industries-section { padding: 48px 0; }
   .industry-tag { padding: 10px 16px; font-size: 0.78rem; }
   .industry-extra { display: none; }
   .industries-show-more { display: flex; }
 
   /* ── Process ── */
-  .process-section { padding: 52px 0; }
-  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 40px; }
-  .process-step { padding: 36px 28px; }
+  .process-section { padding: 48px 0; }
+  .process-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 40px; }
+  .process-step { padding: 24px 20px; }
   .process-step-num { font-size: 3rem; margin-bottom: 16px; }
   .process-step-icon { top: 28px; right: 24px; }
   .process-step-title { font-size: 1.05rem; }
@@ -1575,7 +1578,7 @@ h1, h2, h3, h4 {
   /* ── CTA section ── */
   .cta-section { padding: 72px 0; }
   .cta-headline {
-    font-size: clamp(1.7rem, 6.5vw, 2.5rem);
+    font-size: clamp(2rem, 7vw, 2.8rem);
     line-height: 1.05;
     letter-spacing: -0.025em;
     margin-bottom: 18px;
@@ -1589,7 +1592,7 @@ h1, h2, h3, h4 {
   .contact-section { padding: 52px 0; }
   .contact-form { padding: 32px 20px; }
   .contact-info { padding: 0; }
-  .contact-info h2 { font-size: clamp(1.4rem, 5.5vw, 2rem); margin-bottom: 14px; }
+  .contact-info h2 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); margin-bottom: 14px; }
   .contact-info p { margin-bottom: 28px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .form-group { margin-bottom: 20px; }
@@ -1608,13 +1611,13 @@ h1, h2, h3, h4 {
 
   /* ── About page ── */
   .about-intro { padding: 52px 0; gap: 40px; }
-  .about-intro h2 { font-size: clamp(1.5rem, 5.5vw, 2rem); margin-bottom: 20px; }
+  .about-intro h2 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); margin-bottom: 20px; }
   .about-values { padding: 52px 0; }
   .about-values-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 36px; }
   .value-card { padding: 32px 24px; }
 
   /* ── Services full page ── */
-  .service-full-card { padding: 32px 24px; }
+  .service-full-card { padding: 28px 22px; }
   .service-full-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
   .service-full-card p { font-size: 0.87rem; margin-bottom: 20px; }
   .service-full-card ul { grid-template-columns: 1fr; gap: 8px; }
@@ -1656,8 +1659,8 @@ h1, h2, h3, h4 {
   /* Hero — tighten further */
   .hero { padding: 80px 0 52px; }
   .hero-title {
-    font-size: clamp(2.2rem, 9vw, 3rem);
-    line-height: 1.05;
+    font-size: clamp(2.3rem, 9.5vw, 3.2rem);
+    line-height: 1.04;
     letter-spacing: -0.025em;
   }
   .hero-sub { font-size: 0.875rem; margin-bottom: 24px; }
@@ -1665,11 +1668,11 @@ h1, h2, h3, h4 {
 
   /* Inner page hero */
   .page-hero { padding: 80px 0 36px; }
-  .page-hero h1 { font-size: clamp(1.85rem, 7.5vw, 2.5rem); }
+  .page-hero h1 { font-size: clamp(1.95rem, 8vw, 2.6rem); }
 
   /* Section headings */
-  .section-title { font-size: clamp(1.35rem, 5.5vw, 1.9rem); }
-  .section { padding: 44px 0; }
+  .section-title { font-size: clamp(1.7rem, 6.5vw, 2.2rem); }
+  .section { padding: 40px 0; }
   .section-header { margin-bottom: 28px; }
 
   /* Stats — keep 2-col even on very small phones */
@@ -1683,7 +1686,7 @@ h1, h2, h3, h4 {
 
   /* CTA */
   .cta-section { padding: 60px 0; }
-  .cta-headline { font-size: clamp(1.5rem, 6.5vw, 2.1rem); }
+  .cta-headline { font-size: clamp(1.85rem, 7vw, 2.5rem); }
   .cta-sub { font-size: 0.85rem; }
 
   /* FAQ */
@@ -1696,7 +1699,7 @@ h1, h2, h3, h4 {
   .process-step-num { font-size: 2.6rem; }
 
   /* Service cards */
-  .service-card { padding: 28px 20px; }
+  .service-card { padding: 22px 18px; }
   .service-full-card { padding: 28px 20px; }
   .service-name { font-size: 1.1rem; }
 
