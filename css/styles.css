@@ -1746,7 +1746,7 @@ h1, h2, h3, h4 {
   .about-intro h2 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); margin-bottom: 20px; }
   .about-intro > div:first-child { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .about-intro > div:first-child h2 { text-align: center; }
-  .about-intro > div:first-child p { text-align: center; }
+  .about-intro > div:first-child p { text-align: left; }
   .about-intro > div:first-child .btn { align-self: center; }
   .about-values .label { display: inline-flex; justify-content: center; margin: 0 auto 16px; }
   .about-values h2 { text-align: center; max-width: 100%; }
@@ -1845,6 +1845,43 @@ h1, h2, h3, h4 {
     max-width: 100%;
     word-break: break-word;
     overflow-wrap: break-word;
+  }
+
+  /* ── Alignment: body text left, section headers center ── */
+  /* Value cards — card titles and body left */
+  .value-card h3 { text-align: left; }
+  .value-card p  { text-align: left; }
+
+  /* Service cards (homepage grid) — left */
+  .service-card h3 { text-align: left; }
+  .service-card p  { text-align: left; }
+
+  /* Service full cards (services page) — left */
+  .service-full-card h3 { text-align: left; }
+  .service-full-card p  { text-align: left; }
+  .service-full-card ul { text-align: left; }
+
+  /* Contact page — body text left */
+  .contact-info p         { text-align: left; }
+  .contact-item-text      { text-align: left; }
+  .contact-item-text span { text-align: left; }
+
+  /* Process steps — left */
+  .process-step h3 { text-align: left; }
+  .process-step p  { text-align: left; }
+
+  /* Testimonials + case studies — left */
+  .testimonial-card p { text-align: left; }
+  .cs-body            { text-align: left; }
+
+  /* Global safety net — body text always left; specific centered rules above override */
+  .section p:not(.section-sub):not(.cta-sub):not(.hero-sub),
+  .card p,
+  .service-card p,
+  .value-card p,
+  .process-step p,
+  .contact-info p {
+    text-align: left;
   }
 
   /* ── About proof block ── */
