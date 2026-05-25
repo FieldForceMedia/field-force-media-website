@@ -257,6 +257,10 @@ FOOTER = """<footer class="footer">
           <img src="../images/logo-full.png" alt="Field Force Media" />
         </a>
         <p class="footer-tagline">Full-service marketing for home service businesses. Built to grow revenue.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/fieldforcemedia" target="_blank" rel="noopener" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61589489346007" target="_blank" rel="noopener" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
