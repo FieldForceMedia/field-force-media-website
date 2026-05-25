@@ -63,7 +63,7 @@ details[open] .faq-q::after { transform: rotate(45deg); }
 
 /* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
@@ -1457,7 +1457,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
   /* ── Layout ── */
-  .container { padding: 0 20px; }
+  .container { padding: 0 16px; }
   .section { padding: 48px 0; }
 
   /* ── Nav ── */
@@ -1523,15 +1523,38 @@ h1, h2, h3, h4 {
 
   /* ── Results / Stat blocks ── */
   .results-section { padding: 48px 0; }
-  .results-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
-  .result-item { padding: 32px 24px; }
+  .results-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: transparent;
+    border: none;
+  }
+  .result-item {
+    padding: 32px 24px;
+    border: 1px solid var(--white-08);
+    border-right: none;
+    border-bottom: none;
+  }
+  .result-item:nth-child(even) { border-right: 1px solid var(--white-08); }
+  .result-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--white-08); }
   .result-num { font-size: clamp(2rem, 8vw, 2.8rem); }
   .result-label { font-size: 0.78rem; }
 
   /* ── Services section ── */
   .services-section { padding: 48px 0; }
-  .services-grid { grid-template-columns: 1fr; gap: 12px; }
-  .service-card { padding: 24px 20px; }
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: transparent;
+    border: none;
+  }
+  .service-card {
+    padding: 24px 20px;
+    width: 100%;
+    border: 1px solid var(--white-08);
+    border-bottom: none;
+  }
+  .service-card:last-child { border-bottom: 1px solid var(--white-08); }
 
   /* ── Case studies ── */
   .case-studies-section { padding: 48px 0; }
@@ -1551,8 +1574,19 @@ h1, h2, h3, h4 {
 
   /* ── Process ── */
   .process-section { padding: 48px 0; }
-  .process-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 40px; }
-  .process-step { padding: 24px 20px; }
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: transparent;
+    margin-top: 40px;
+  }
+  .process-step {
+    padding: 24px 20px;
+    width: 100%;
+    border: 1px solid var(--white-08);
+    border-bottom: none;
+  }
+  .process-step:last-child { border-bottom: 1px solid var(--white-08); }
   .process-step-num { font-size: 3rem; margin-bottom: 16px; }
   .process-step-icon { top: 28px; right: 24px; }
   .process-step-title { font-size: 1.05rem; }
@@ -1560,8 +1594,13 @@ h1, h2, h3, h4 {
 
   /* ── Testimonials ── */
   .testimonials-section { padding: 52px 0; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .testimonial-card { padding: 32px 24px; }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: transparent;
+    border: 1px solid var(--white-08);
+  }
+  .testimonial-card { padding: 32px 24px; border-bottom: 1px solid var(--white-08); }
   .testimonial-card-cta { padding: 32px 24px; }
   .testimonial-quote { font-size: 0.92rem; line-height: 1.8; margin-bottom: 28px; }
 
@@ -1599,11 +1638,15 @@ h1, h2, h3, h4 {
   .form-group label { font-size: 0.65rem; margin-bottom: 8px; }
   .form-group input,
   .form-group select,
-  .form-group textarea {
+  .form-group textarea,
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
     padding: 13px 16px;
     font-size: 1rem;           /* Prevents iOS zoom on focus (must be >=16px) */
     min-height: 48px;
     -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
   }
   .form-group textarea { min-height: 110px; }
   .contact-item { margin-bottom: 20px; padding-bottom: 20px; }
@@ -1613,11 +1656,37 @@ h1, h2, h3, h4 {
   .about-intro { padding: 52px 0; gap: 40px; }
   .about-intro h2 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); margin-bottom: 20px; }
   .about-values { padding: 52px 0; }
-  .about-values-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 36px; }
-  .value-card { padding: 32px 24px; }
+  .about-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    background: transparent;
+    border: none;
+    margin-top: 36px;
+  }
+  .value-card {
+    padding: 32px 24px;
+    width: 100%;
+    border: 1px solid var(--white-08);
+    border-right: none;
+    border-bottom: none;
+  }
+  .value-card:nth-child(even) { border-right: 1px solid var(--white-08); }
+  .value-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--white-08); }
 
   /* ── Services full page ── */
-  .service-full-card { padding: 28px 22px; }
+  .services-full-grid {
+    gap: 0;
+    background: transparent;
+    border: none;
+  }
+  .service-full-card {
+    padding: 28px 22px;
+    width: 100%;
+    border: 1px solid var(--white-08);
+    border-bottom: none;
+  }
+  .service-full-card:last-child { border-bottom: 1px solid var(--white-08); }
+  .service-full-card[style*="grid-column"] { grid-column: 1 !important; }
   .service-full-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
   .service-full-card p { font-size: 0.87rem; margin-bottom: 20px; }
   .service-full-card ul { grid-template-columns: 1fr; gap: 8px; }
@@ -1646,15 +1715,29 @@ h1, h2, h3, h4 {
     padding-top: 24px;
   }
   .footer-bottom span { font-size: 0.72rem; }
+
+  /* ── Typography floor — nothing smaller than 13px effective ── */
+  .label { font-size: 0.72rem; }           /* floor at ~11.5px – raise to 0.72rem */
+  .body-text { font-size: 0.9rem; }
+  .result-context { font-size: 0.72rem; }
+
+  /* ── CTA button full-width on mobile ── */
+  .cta-actions .btn-outline { border-color: var(--white-20); }
+
+  /* ── Prevent fixed-width bleed on contact info box ── */
+  .contact-info > div[style] { max-width: 100% !important; box-sizing: border-box; }
+
+  /* ── h2 anchoring — make sure section heads stay bold ── */
+  .section-title { font-weight: 900; }
 }
 
 /* ── 480px and below: very small phones ── */
 @media (max-width: 480px) {
   /* Container edge breathing room */
-  .container { padding: 0 16px; }
+  .container { padding: 0 12px; }
 
   /* Nav */
-  .nav-inner { padding: 0 16px; }
+  .nav-inner { padding: 0 12px; }
 
   /* Hero — tighten further */
   .hero { padding: 80px 0 52px; }
@@ -1718,7 +1801,14 @@ h1, h2, h3, h4 {
   .contact-form { padding: 24px 16px; }
   .form-group input,
   .form-group select,
-  .form-group textarea { padding: 12px 14px; }
+  .form-group textarea,
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 12px 14px;
+    font-size: 1rem;           /* Keep >=16px — prevents iOS auto-zoom */
+    -webkit-text-size-adjust: 100%;
+  }
 
   /* Industries */
   .industries-section { padding: 44px 0; }
