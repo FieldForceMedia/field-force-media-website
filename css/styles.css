@@ -1729,6 +1729,21 @@ h1, h2, h3, h4 {
 
   /* ── h2 anchoring — make sure section heads stay bold ── */
   .section-title { font-weight: 900; }
+
+  /* ── Prevent text bleeding off screen on contact + about pages ── */
+  .contact-section *, .about-intro *, .about-values * {
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* ── About proof block ── */
+  .proof-block { padding: 28px 20px !important; }
+  .proof-stats-grid { gap: 16px 10px !important; }
+  .proof-stat-val { font-size: clamp(1.1rem, 4.5vw, 1.4rem) !important; letter-spacing: -0.01em !important; }
+
+  /* ── Contact What to Expect box ── */
+  .what-to-expect-box { padding: 20px 16px !important; }
 }
 
 /* ── 480px and below: very small phones ── */
@@ -1829,4 +1844,8 @@ h1, h2, h3, h4 {
 
   /* Buttons */
   .btn-lg { padding: 14px 24px; font-size: 0.78rem; }
+
+  /* ── About proof block — very small phones ── */
+  .proof-block { padding: 20px 16px !important; }
+  .proof-stat-val { font-size: clamp(1rem, 4vw, 1.25rem) !important; }
 }
