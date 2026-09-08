@@ -578,6 +578,13 @@ h1, h2, h3, h4 {
   background: #0F0F0E;
 }
 .cs-card.cs-card-featured:hover { background: #141410; }
+/* Flagship card sits alone in the left column — center its content so it
+   balances the taller stacked column beside it on desktop. */
+.cs-card.cs-card-flagship {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .cs-card.cs-card-coming {
   background: var(--bg-2);
   display: flex;
