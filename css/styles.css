@@ -2043,6 +2043,8 @@ h1, h2, h3, h4 {
   background: var(--white-08);
   border: 1px solid var(--white-08);
 }
+.metrics-row.metrics-row-3 { grid-template-columns: repeat(3, 1fr); }
+.metric-val[data-count] { font-variant-numeric: tabular-nums; }
 .metric {
   background: var(--bg-card);
   padding: 40px 32px;
@@ -2096,7 +2098,18 @@ h1, h2, h3, h4 {
   background: #000;
   border: 1px solid var(--white-08);
   overflow: hidden;
+  cursor: pointer;
 }
+.vtc-card.is-playing .vtc-media { cursor: default; }
+.vtc-card .vtc-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(196, 160, 82, 0);
+  transition: background 0.2s ease;
+  pointer-events: none;
+}
+.vtc-card:not(.is-playing) .vtc-media:hover::after { background: rgba(196, 160, 82, 0.10); }
 .vtc-card video {
   width: 100%;
   height: 100%;
@@ -2117,13 +2130,22 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  pointer-events: none;
   transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
-.vtc-play { pointer-events: none; }
 .vtc-play svg { transform: translateX(2px); }
-.vtc-play:hover { background: rgba(10,10,10,0.75); border-color: var(--gold); transform: scale(1.06); }
+.vtc-card:not(.is-playing) .vtc-media:hover .vtc-play {
+  background: rgba(10,10,10,0.8);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: scale(1.08);
+}
 .vtc-card.is-playing .vtc-play { display: none; }
+
+/* two videos / one video: no 3D context (avoids hit-testing offset at browser zoom) */
+.vtc-wrap.vtc-flat { perspective: none; }
+.vtc-wrap.vtc-flat .vtc-track { transform-style: flat; height: auto; }
+.vtc-wrap.vtc-flat .vtc-card { transform: none; }
 .vtc-caption {
   padding: 20px 4px 0;
 }
@@ -2218,21 +2240,19 @@ h1, h2, h3, h4 {
 .vtc-dot.active { background: var(--gold); width: 26px; border-radius: 4px; }
 
 /* single video — no coverflow needed */
-.vtc-track.is-solo { height: auto; perspective: none; }
 .vtc-track.is-solo .vtc-card { position: relative; }
 .vtc-track.is-solo ~ .vtc-controls { display: none; }
 
 /* two videos — side by side, no coverflow */
-.vtc-wrap:has(.vtc-track.is-pair) { perspective: none; overflow: visible; }
+.vtc-wrap.vtc-flat { overflow: visible; }
 .vtc-track.is-pair {
-  height: auto;
   gap: 40px;
   flex-wrap: wrap;
 }
-.vtc-track.is-pair .vtc-card {
+.vtc-track.is-pair .vtc-card,
+.vtc-track.is-solo .vtc-card {
   position: relative;
   width: min(320px, 80vw);
-  transform: none;
   opacity: 1;
 }
 .vtc-track.is-pair ~ .vtc-controls { display: none; }
@@ -2348,7 +2368,7 @@ h1, h2, h3, h4 {
 
 /* ---- Results page — responsive ---- */
 @media (max-width: 1024px) {
-  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .metrics-row:not(.metrics-row-3) { grid-template-columns: repeat(2, 1fr); }
   .case-deep-body { grid-template-columns: 1fr; gap: 36px; }
   .case-deep-quote, .case-deep-block p { max-width: 100%; }
 }
@@ -2360,8 +2380,9 @@ h1, h2, h3, h4 {
   .vtc-wrap { margin-top: 36px; perspective: none; }
   .vtc-track { height: auto; padding: 0; }
   .vtc-card { width: min(300px, 80vw); }
-  .vtc-card.pos-active { position: relative; transform: none; opacity: 1; }
-  .vtc-card:not(.pos-active) {
+  /* only the coverflow (3+) needs cards hidden off the active one */
+  .vtc-track:not(.is-pair):not(.is-solo) .vtc-card.pos-active { position: relative; transform: none; opacity: 1; }
+  .vtc-track:not(.is-pair):not(.is-solo) .vtc-card:not(.pos-active) {
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -2371,8 +2392,10 @@ h1, h2, h3, h4 {
   .case-deep:first-of-type { margin-top: 40px; }
   .case-deep-name { margin-bottom: 28px; }
 }
+@media (max-width: 600px) {
+  .metrics-row, .metrics-row.metrics-row-3 { grid-template-columns: 1fr; }
+}
 @media (max-width: 480px) {
-  .metrics-row { grid-template-columns: 1fr; }
   .case-deep-stats { grid-template-columns: 1fr; }
   .cd-stat-val { font-size: 1.45rem; }
 }

@@ -51,8 +51,11 @@ toggle?.addEventListener('click', () => {
   const total = cards.length;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const wrap = track.closest('.vtc-wrap');
+
   if (total <= 1) {
     track.classList.add('is-solo');
+    wrap && wrap.classList.add('vtc-flat');
     wirePlay();
     return;
   }
@@ -60,6 +63,7 @@ toggle?.addEventListener('click', () => {
   // With only two testimonials, show them side by side — no coverflow needed.
   if (total === 2) {
     track.classList.add('is-pair');
+    wrap && wrap.classList.add('vtc-flat');
     wirePlay();
     return;
   }
@@ -177,4 +181,71 @@ toggle?.addEventListener('click', () => {
       vid.addEventListener('ended', () => card.classList.remove('is-playing'));
     });
   }
+})();
+
+// ---- Count-up number animations ----
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SELECTOR = '.metric-val[data-count], .cs-stat-val, .cd-stat-val, .proof-stat-val';
+  const els = document.querySelectorAll(SELECTOR);
+  if (!els.length) return;
+
+  function parse(el) {
+    // a trailing <span> (small unit like "/mo" or "wks") is preserved verbatim
+    const kids = Array.from(el.children);
+    const tailSpan = kids.length === 1 && kids[0].tagName === 'SPAN' ? kids[0].outerHTML : '';
+    if (!tailSpan && kids.length) return null; // unexpected markup — leave it alone
+
+    if (el.dataset.count != null) {
+      return {
+        target: parseFloat(el.dataset.count),
+        prefix: el.dataset.prefix || '',
+        suffix: el.dataset.suffix || '',
+        tail: '',
+        decimal: el.dataset.decimal === 'true' || String(el.dataset.count).includes('.'),
+      };
+    }
+    const lead = (tailSpan ? (el.childNodes[0] ? el.childNodes[0].textContent : '') : el.textContent).trim();
+    const m = lead.match(/^(\D*?)(\d[\d,]*(?:\.\d+)?)(.*)$/);
+    if (!m) return null;
+    return {
+      target: parseFloat(m[2].replace(/,/g, '')),
+      prefix: m[1],
+      suffix: m[3],
+      tail: tailSpan,
+      decimal: m[2].includes('.'),
+    };
+  }
+
+  function run(el, cfg) {
+    const start = performance.now();
+    const dur = 1400;
+    const fmt = (v) => cfg.decimal ? v.toFixed(1) : Math.round(v).toLocaleString();
+    const write = (v) => {
+      const s = cfg.prefix + fmt(v) + cfg.suffix;
+      if (cfg.tail) el.innerHTML = s + cfg.tail;
+      else el.textContent = s;
+    };
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      write((1 - Math.pow(1 - p, 3)) * cfg.target);
+      if (p < 1) requestAnimationFrame(tick);
+      else write(cfg.target);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const cfg = parse(e.target);
+      if (cfg) run(e.target, cfg);
+    });
+  }, { threshold: 0.6 });
+
+  els.forEach((el) => {
+    if (reduce || !parse(el)) return;
+    io.observe(el);
+  });
 })();
