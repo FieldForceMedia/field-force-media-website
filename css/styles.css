@@ -20,7 +20,7 @@
   --white:         #FFFFFF;
   --white-70:      rgba(255,255,255,0.70);
   --white-45:      rgba(255,255,255,0.45);
-  --white-20:      rgba(255,255,255,0.20);
+  --white-20:      rgba(255,255,255,0.30); /* small uppercase labels — nudged up from 0.20 for legibility on near-black */
   --white-08:      rgba(255,255,255,0.08);
   --radius:        2px;
   --transition:    all 0.28s cubic-bezier(0.4,0,0.2,1);
@@ -1020,6 +1020,20 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 .page-hero::before { display: none; }
+.page-hero::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40vw;
+  max-width: 560px;
+  aspect-ratio: 1538 / 954;
+  background: url(../images/logo-full.png) no-repeat center / contain;
+  opacity: 0.055;
+  pointer-events: none;
+  z-index: 1;
+}
 .page-hero-content { position: relative; z-index: 2; }
 .page-hero .label { margin-bottom: 20px; }
 .page-hero h1 {
@@ -1196,6 +1210,13 @@ h1, h2, h3, h4 {
 .form-group textarea:focus {
   border-color: var(--gold-border-h);
 }
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+/* dim the select while it still shows its "Select…" prompt */
+.form-group select:has(option[value=""]:checked) { color: rgba(255, 255, 255, 0.42); }
+.form-group select option { color: var(--white); background: var(--bg-3); }
 .form-group textarea { resize: vertical; min-height: 120px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
@@ -1573,6 +1594,7 @@ h1, h2, h3, h4 {
 
   /* ── Inner page hero ── */
   .page-hero { padding: 88px 0 40px; }
+  .page-hero::after { display: none; }
   .page-hero-content { text-align: center; }
   .page-hero .label {
     margin: 0 auto 14px;
@@ -2057,7 +2079,7 @@ h1, h2, h3, h4 {
 }
 .vtc-wrap {
   perspective: 1600px;
-  margin-top: 44px;
+  margin-top: 24px;
   overflow: hidden;
 }
 .vtc-track {
