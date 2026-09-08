@@ -226,6 +226,7 @@ NAV = """<nav class="nav" id="mainNav">
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
       <li><a href="../services.html">Services</a></li>
+      <li><a href="../results.html">Results</a></li>
       <li><a href="../about.html">About</a></li>
       <li><a href="../contact.html">Contact</a></li>
     </ul>
@@ -240,6 +241,7 @@ NAV = """<nav class="nav" id="mainNav">
     <ul class="mobile-nav-links">
       <li><a href="../index.html">Home</a></li>
       <li><a href="../services.html">Services</a></li>
+      <li><a href="../results.html">Results</a></li>
       <li><a href="../about.html">About</a></li>
       <li><a href="../contact.html">Contact</a></li>
     </ul>

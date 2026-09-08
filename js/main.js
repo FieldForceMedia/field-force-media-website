@@ -38,3 +38,133 @@ toggle?.addEventListener('click', () => {
     spans[2].style.transform = '';
   }
 });
+
+// ---- Video testimonials — 3D coverflow carousel ----
+(() => {
+  const track = document.getElementById('vtcTrack');
+  if (!track) return;
+
+  const cards = Array.from(track.querySelectorAll('.vtc-card'));
+  const dotsWrap = document.getElementById('vtcDots');
+  const prevBtn = document.getElementById('vtcPrev');
+  const nextBtn = document.getElementById('vtcNext');
+  const total = cards.length;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (total <= 1) {
+    track.classList.add('is-solo');
+    wirePlay();
+    return;
+  }
+
+  // With only two testimonials, show them side by side — no coverflow needed.
+  if (total === 2) {
+    track.classList.add('is-pair');
+    wirePlay();
+    return;
+  }
+
+  let current = 0;
+  let timer = null;
+  const DELAY = 7000;
+
+  function posClass(i) {
+    const diff = ((i - current) % total + total) % total;
+    const d = diff > total / 2 ? diff - total : diff;
+    if (d === 0) return 'pos-active';
+    if (d === -1) return 'pos-prev';
+    if (d === 1) return 'pos-next';
+    if (d === -2) return 'pos-far-prev';
+    if (d === 2) return 'pos-far-next';
+    return 'pos-hidden';
+  }
+
+  function render() {
+    cards.forEach((card, i) => {
+      card.className = 'vtc-card ' + posClass(i);
+      const vid = card.querySelector('video');
+      if (!card.classList.contains('pos-active') && vid && !vid.paused) {
+        vid.pause();
+      }
+      if (!card.classList.contains('is-playing')) {
+        // keep is-playing only while its own video is actually playing
+      }
+    });
+    if (dotsWrap) {
+      Array.from(dotsWrap.children).forEach((dot, i) =>
+        dot.classList.toggle('active', i === current));
+    }
+  }
+
+  function goTo(i, userAction) {
+    current = ((i % total) + total) % total;
+    render();
+    if (userAction) restart();
+  }
+
+  function start() {
+    if (reduceMotion) return;
+    clearInterval(timer);
+    timer = setInterval(() => {
+      // don't advance while a video is playing
+      const playing = cards.some(c => {
+        const v = c.querySelector('video');
+        return v && !v.paused && !v.ended;
+      });
+      if (!playing) goTo(current + 1, false);
+    }, DELAY);
+  }
+  function stop() { clearInterval(timer); }
+  function restart() { stop(); start(); }
+
+  // dots
+  if (dotsWrap) {
+    cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'vtc-dot' + (i === 0 ? ' active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i, true));
+      dotsWrap.appendChild(dot);
+    });
+  }
+
+  prevBtn?.addEventListener('click', () => goTo(current - 1, true));
+  nextBtn?.addEventListener('click', () => goTo(current + 1, true));
+
+  // click a side card to bring it forward
+  cards.forEach((card, i) => {
+    card.addEventListener('click', (e) => {
+      if (card.classList.contains('pos-active')) return;
+      if (e.target.closest('.vtc-play')) return;
+      goTo(i, true);
+    });
+  });
+
+  track.parentElement.addEventListener('mouseenter', stop);
+  track.parentElement.addEventListener('mouseleave', start);
+
+  wirePlay();
+  goTo(0, false);
+  start();
+
+  function wirePlay() {
+    cards.forEach(card => {
+      const vid = card.querySelector('video');
+      const btn = card.querySelector('.vtc-play');
+      if (!vid || !btn) return;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cards.forEach(c => {
+          const v = c.querySelector('video');
+          if (v && v !== vid) { v.pause(); c.classList.remove('is-playing'); }
+        });
+        vid.setAttribute('controls', '');
+        vid.play();
+      });
+      vid.addEventListener('play', () => card.classList.add('is-playing'));
+      vid.addEventListener('pause', () => card.classList.remove('is-playing'));
+      vid.addEventListener('ended', () => card.classList.remove('is-playing'));
+    });
+  }
+})();
