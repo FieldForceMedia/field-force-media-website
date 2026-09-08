@@ -132,11 +132,11 @@ toggle?.addEventListener('click', () => {
   prevBtn?.addEventListener('click', () => goTo(current - 1, true));
   nextBtn?.addEventListener('click', () => goTo(current + 1, true));
 
-  // click a side card to bring it forward
+  // click a side card to bring it forward (active card handled by wirePlay)
   cards.forEach((card, i) => {
     card.addEventListener('click', (e) => {
       if (card.classList.contains('pos-active')) return;
-      if (e.target.closest('.vtc-play')) return;
+      if (e.target.closest('.vtc-media')) return;
       goTo(i, true);
     });
   });
@@ -151,17 +151,27 @@ toggle?.addEventListener('click', () => {
   function wirePlay() {
     cards.forEach(card => {
       const vid = card.querySelector('video');
-      const btn = card.querySelector('.vtc-play');
-      if (!vid || !btn) return;
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
+      const media = card.querySelector('.vtc-media');
+      if (!vid || !media) return;
+
+      const startPlayback = (e) => {
+        // once native controls are showing, they own every click
+        if (vid.controls) return;
+        if (e) e.stopPropagation();
         cards.forEach(c => {
           const v = c.querySelector('video');
           if (v && v !== vid) { v.pause(); c.classList.remove('is-playing'); }
         });
-        vid.setAttribute('controls', '');
-        vid.play();
-      });
+        vid.controls = true;
+        const attempt = vid.play();
+        if (attempt && attempt.catch) {
+          attempt.catch(() => { vid.load(); vid.play().catch(() => {}); });
+        }
+      };
+
+      // the whole poster area is the play target, not just the small button
+      media.addEventListener('click', startPlayback);
+
       vid.addEventListener('play', () => card.classList.add('is-playing'));
       vid.addEventListener('pause', () => card.classList.remove('is-playing'));
       vid.addEventListener('ended', () => card.classList.remove('is-playing'));

@@ -2061,15 +2061,8 @@ h1, h2, h3, h4 {
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--white);
-  margin-bottom: 8px;
-}
-.metric-note {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.66rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--white-20);
-  line-height: 1.5;
+  line-height: 1.45;
+  max-width: 15ch;
 }
 
 /* ---- Video testimonials — 3D coverflow ---- */
@@ -2127,6 +2120,7 @@ h1, h2, h3, h4 {
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
+.vtc-play { pointer-events: none; }
 .vtc-play svg { transform: translateX(2px); }
 .vtc-play:hover { background: rgba(10,10,10,0.75); border-color: var(--gold); transform: scale(1.06); }
 .vtc-card.is-playing .vtc-play { display: none; }
