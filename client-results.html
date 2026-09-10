@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Client Results | Field Force Media</title>
+  <meta name="description" content="A live snapshot of the home service businesses Field Force Media manages — scope of work and tracked results per account." />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Field Force Media — Client Results" />
+  <meta property="og:description" content="Real clients. Real campaigns. Tracked results." />
+  <meta property="og:image" content="https://www.fieldforcemedia.com/images/logo-full.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ---- Client results page ---- */
+    .cr-hero { padding: 150px 0 46px; background: var(--bg-2); border-bottom: 1px solid var(--gold-border); }
+    .cr-hero .label { margin-bottom: 18px; }
+    .cr-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5.4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      max-width: 22ch;
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+    .cr-hero h1 .gold { color: var(--gold); }
+    .cr-hero p { max-width: 56ch; color: var(--white-70); font-size: 1.03rem; line-height: 1.7; }
+
+    .cr-updated {
+      margin-top: 22px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white-20);
+      display: flex; align-items: center; gap: 9px;
+    }
+    .cr-updated::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .cr-updated.is-stale::before { background: var(--white-20); }
+
+    .cr-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--white-08);
+      border: 1px solid var(--white-08);
+      margin: 56px 0 0;
+    }
+    .cr-sum { background: var(--bg-card); padding: 30px 26px; }
+    .cr-sum-val {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+      letter-spacing: -0.03em;
+      color: var(--gold);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .cr-sum-label {
+      margin-top: 11px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-20);
+    }
+
+    .cr-section { padding: 70px 0 100px; background: var(--bg); }
+    .cr-roster-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap;
+      border-bottom: 1px solid var(--white-08); padding-bottom: 14px; margin-bottom: 20px;
+    }
+    .cr-roster-head h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.15rem; }
+    .cr-roster-head span {
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white-20);
+    }
+
+    .cr-roster { display: grid; gap: 14px; }
+    .cr-client {
+      background: #0F0F0E;
+      border: 1px solid var(--white-08);
+      border-left: 3px solid var(--gold);
+      padding: 26px 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 24px 34px;
+      align-items: start;
+    }
+    .cr-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.14rem; letter-spacing: -0.01em; line-height: 1.2; }
+    .cr-meta {
+      margin-top: 8px;
+      font-family: 'Oswald', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--white-20); line-height: 1.7;
+    }
+    .cr-meta i { color: var(--gold); font-style: normal; margin: 0 7px; }
+    .cr-status {
+      display: inline-flex; align-items: center; gap: 7px; margin-top: 14px;
+      font-family: 'Oswald', sans-serif; font-size: 0.66rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--white-45);
+    }
+    .cr-status::before { content: ""; width: 7px; height: 7px; background: var(--white-20); flex-shrink: 0; }
+    .cr-status.is-active { color: #5BB98C; }
+    .cr-status.is-active::before { background: #5BB98C; }
+
+    .cr-flabel {
+      font-family: 'Oswald', sans-serif; font-size: 0.62rem; letter-spacing: 0.17em;
+      text-transform: uppercase; color: var(--white-20); margin-bottom: 10px;
+    }
+    .cr-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .cr-chip {
+      font-family: 'Oswald', sans-serif; font-size: 0.68rem; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--white-45);
+      background: #161616; border: 1px solid var(--white-08); padding: 4px 9px;
+    }
+    .cr-stat {
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.45rem;
+      letter-spacing: -0.03em; color: var(--gold); line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+    }
+    .cr-stat.plain { color: var(--white); font-size: 1.05rem; }
+    .cr-rnote { margin-top: 7px; font-size: 0.88rem; color: var(--white-70); line-height: 1.55; }
+    .cr-tag {
+      display: inline-block; margin-top: 11px;
+      font-family: 'Oswald', sans-serif; font-size: 0.6rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--white-20);
+      border: 1px solid var(--white-08); padding: 3px 8px;
+    }
+    .cr-tag.verified { color: var(--gold); border-color: var(--gold-border); }
+
+    .cr-foot {
+      margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--white-08);
+      max-width: 80ch; display: grid; gap: 10px;
+    }
+    .cr-foot p { font-size: 0.82rem; color: var(--white-20); line-height: 1.6; }
+    .cr-foot b { color: var(--white-45); font-weight: 600; }
+
+    .cr-loading { padding: 60px 0; text-align: center; color: var(--white-20); font-family: 'Oswald', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.8rem; }
+
+    @media (max-width: 980px) {
+      .cr-summary { grid-template-columns: repeat(2, 1fr); }
+      .cr-client { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 560px) { .cr-summary { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-mark.png" alt="Field Force Media mark" />
+      <div class="nav-logo-text">
+        <span class="line1">Field Force</span>
+        <span class="line2">Media</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-gold nav-cta">Get Started →</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-cta-wrap">
+      <a href="contact.html" class="btn btn-gold" style="width:100%;justify-content:center;">Book a Free Strategy Call →</a>
+    </div>
+  </div>
+</div>
+
+<header class="cr-hero">
+  <div class="container">
+    <div class="label">What We've Built for Home Service Businesses</div>
+    <h1>Real clients. Real campaigns. <span class="gold">Tracked results.</span></h1>
+    <p>A working snapshot of the home service businesses Field Force Media manages — the scope of work on each account and the results measured to date. Lead counts come straight from our tracking; revenue is marked verified, client-reported, or projected.</p>
+    <div class="cr-updated" id="crUpdated">Live from our client tracker</div>
+  </div>
+</header>
+
+<main class="cr-section">
+  <div class="container">
+    <div class="cr-summary" id="crSummary"></div>
+
+    <div style="margin-top:60px;">
+      <div class="cr-roster-head">
+        <h2>Client Roster</h2>
+        <span id="crCount">&nbsp;</span>
+      </div>
+      <div class="cr-roster" id="crRoster">
+        <div class="cr-loading">Loading client results&hellip;</div>
+      </div>
+    </div>
+
+    <div class="cr-foot">
+      <p><b>How to read this.</b> &ldquo;Verified&rdquo; results come from Field Force&rsquo;s own tracking or the founder&rsquo;s company. &ldquo;Client-reported&rdquo; figures come directly from the client. &ldquo;Projected&rdquo; is a pace, not a booked total. Lead counts reflect tracked leads through Field Force&rsquo;s Meta lead-alert system.</p>
+      <p><b>Still being gathered:</b> ad spend, cost-per-lead, close rate and booked revenue for the active Meta accounts, plus proof screenshots.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-full"><img src="images/logo-full.png" alt="Field Force Media" /></a>
+        <p class="footer-tagline">Full-service marketing for home service businesses. Built to grow revenue.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/fieldforcemedia" target="_blank" rel="noopener" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61589489346007" target="_blank" rel="noopener" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Paid Advertising</a></li>
+          <li><a href="services.html">Website Design</a></li>
+          <li><a href="services.html">Brand Identity</a></li>
+          <li><a href="services.html">Direct Mail</a></li>
+          <li><a href="services.html">Marketing Strategy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><a href="contact.html" style="color:var(--gold);">Book a Free Strategy Call →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Field Force Media. All rights reserved.</span>
+      <span class="gold-text">Built for the Home Service Industry.</span>
+    </div>
+  </div>
+</footer>
+
+<script id="crFallback" type="application/json">
+[
+  {"Client":"Island Scape North Shore LLC","Trade":"Lawn Care & Landscaping","Location":"North Shore, O'ahu, HI","Field Force Scope":"Website · Meta Ads · Brand Identity · Local SEO · Direct Mail","Tracked Leads":"","Revenue / Result":"$2K → $35K/mo recurring revenue · 17.5× over 14 months","Verification":"Verified (founder's company)","Status":"Active"},
+  {"Client":"Valley Pest Control","Trade":"Pest Control","Location":"Clovis & Fresno, CA","Field Force Scope":"Meta Ads · Ad Creative · Lead Tracking & Alerts","Tracked Leads":"71 total · 8 in last 7 days","Revenue / Result":"$19K+ in signed contracts, first ~9 weeks on $50/day","Verification":"Leads verified · revenue client-reported","Status":"Active"},
+  {"Client":"HydroSpark","Trade":"Window Cleaning & Pressure Washing","Location":"Colorado","Field Force Scope":"Meta Ads · Custom Booking Page · Lead Tracking & Alerts","Tracked Leads":"32 total · 9 in last 7 days","Revenue / Result":"Awaiting revenue data from client","Verification":"Leads verified","Status":"Active"},
+  {"Client":"NEO Window Cleaning","Trade":"Window, Gutter & Solar Cleaning","Location":"Fresno, CA","Field Force Scope":"Meta Ads · Ad Creative","Tracked Leads":"Awaiting current data","Revenue / Result":"10.7× ROAS · $8K+ first month · $200K+ year-one pace","Verification":"Client-reported · year-one projected","Status":"Active"},
+  {"Client":"Pacific Breeze Window Cleaning","Trade":"Window Cleaning","Location":"O'ahu, HI","Field Force Scope":"Custom Multi-Page Website · Local SEO","Tracked Leads":"","Revenue / Result":"Multi-page site delivered · on-camera owner testimonial on file","Verification":"Delivered","Status":"Active"},
+  {"Client":"MyCleanWindows — Permanent Lighting","Trade":"Permanent LED Lighting","Location":"Utah, Davis & Summit Counties, UT","Field Force Scope":"Landing Page · Meta Ads · Lead Tracking & Alerts","Tracked Leads":"24 total (active-campaign window)","Revenue / Result":"$6,425 sold — 2 jobs booked in month 1 ($3,275 + $3,150)","Verification":"Leads verified · revenue client-reported","Status":"On hold (Aug 2026)"},
+  {"Client":"MyCleanWindows — Window Cleaning","Trade":"Window Cleaning","Location":"Utah","Field Force Scope":"Meta Ads · Lead Tracking & Alerts","Tracked Leads":"4 total (active-campaign window)","Revenue / Result":"Short test campaign","Verification":"Leads verified","Status":"On hold (Jul 2026)"},
+  {"Client":"Red Rock Palms LLC","Trade":"Palm Tree Care","Location":"St. George, UT","Field Force Scope":"Custom Multi-Page Website · Local SEO","Tracked Leads":"","Revenue / Result":"7-page local site built & delivered across the St. George service area","Verification":"Delivered","Status":"Delivered"}
+]
+</script>
+
+<script>
+(function () {
+  var SHEET_ID = '19Ca8XaezDSA9QWfSZB8Bw_tesNv37OweQk6zcOir--M';
+  var CSV_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv';
+
+  function parseCSV(text) {
+    var rows = [], row = [], field = '', q = false, i, c;
+    for (i = 0; i < text.length; i++) {
+      c = text[i];
+      if (q) {
+        if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else q = false; }
+        else field += c;
+      } else if (c === '"') { q = true; }
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else if (c !== '\r') { field += c; }
+    }
+    if (field.length || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  function toObjects(rows) {
+    if (!rows.length) return [];
+    var head = rows[0].map(function (h) { return h.trim(); });
+    var out = [];
+    for (var r = 1; r < rows.length; r++) {
+      var o = {}, empty = true;
+      for (var c = 0; c < head.length; c++) {
+        o[head[c]] = (rows[r][c] || '').trim();
+        if (o[head[c]]) empty = false;
+      }
+      var name = o.Client || '';
+      if (!name || /^(note|still gathering|still being gathered)$/i.test(name)) break;
+      if (!empty) out.push(o);
+    }
+    return out;
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (m) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+    });
+  }
+
+  function statusClass(s) { return /^active/i.test(s || '') ? 'cr-status is-active' : 'cr-status'; }
+  function verifiedClass(v) { return /verified/i.test(v || '') ? 'cr-tag verified' : 'cr-tag'; }
+
+  function chips(scope) {
+    return (scope || '').split(/\s*[·|,]\s*/).filter(Boolean).map(function (p) {
+      return '<span class="cr-chip">' + esc(p) + '</span>';
+    }).join('');
+  }
+
+  function leadNumber(s) {
+    var m = (s || '').match(/^\s*([\d,]+)/);
+    return m ? parseInt(m[1].replace(/,/g, ''), 10) : null;
+  }
+
+  function resultBlock(row) {
+    var leads = row['Tracked Leads'] || '';
+    var result = row['Revenue / Result'] || row['Revenue / Booked Work Results'] || '';
+    var verif = row.Verification || '';
+    var html = '<div class="cr-flabel">Result</div>';
+    var ln = leadNumber(leads);
+    if (ln != null) {
+      html += '<div class="cr-stat">' + ln.toLocaleString() + '<span style="font-size:.78rem;color:var(--white-20)"> leads</span></div>';
+      var extra = leads.replace(/^\s*[\d,]+\s*(total)?\s*(·|-)?\s*/i, '').trim();
+      if (extra) html += '<div class="cr-rnote" style="color:var(--white-20);font-size:.8rem;margin-top:4px">' + esc(extra) + '</div>';
+      if (result) html += '<div class="cr-rnote">' + esc(result) + '</div>';
+    } else if (result) {
+      var mult = result.match(/(\d+(?:\.\d+)?×)/);
+      var arrowAmt = result.match(/(?:→|->|\bto\b)\s*(\$[\d.,]+\s?[KMB]?\+?)/i);
+      var firstAmt = result.match(/(\$[\d.,]+\s?[KMB]?\+?)/);
+      var stat = mult ? mult[1] : (arrowAmt ? arrowAmt[1] : (firstAmt ? firstAmt[1] : null));
+      if (stat) {
+        html += '<div class="cr-stat">' + esc(stat.replace(/\s+/g, '')) + '</div>';
+        html += '<div class="cr-rnote">' + esc(result) + '</div>';
+      } else {
+        html += '<div class="cr-stat plain">' + esc(result) + '</div>';
+      }
+    } else {
+      html += '<div class="cr-stat plain" style="color:var(--white-20)">In progress</div>';
+    }
+    if (verif) html += '<span class="' + verifiedClass(verif) + '">' + esc(verif) + '</span>';
+    return html;
+  }
+
+  function render(data, live) {
+    var roster = document.getElementById('crRoster');
+    if (!data.length) { roster.innerHTML = '<div class="cr-loading">No client rows found.</div>'; return; }
+
+    roster.innerHTML = data.map(function (row) {
+      var trade = row.Trade || '';
+      var loc = row.Location || '';
+      var metaBits = [trade, loc].filter(Boolean).map(esc).join(' <i>/</i> ');
+      return '' +
+        '<article class="cr-client">' +
+          '<div>' +
+            '<div class="cr-name">' + esc(row.Client) + '</div>' +
+            (metaBits ? '<div class="cr-meta">' + metaBits + '</div>' : '') +
+            (row.Status ? '<div class="' + statusClass(row.Status) + '">' + esc(row.Status) + '</div>' : '') +
+          '</div>' +
+          '<div>' +
+            '<div class="cr-flabel">Field Force Scope</div>' +
+            '<div class="cr-chips">' + chips(row['Field Force Scope'] || row['Work Performed / In Scope']) + '</div>' +
+          '</div>' +
+          '<div>' + resultBlock(row) + '</div>' +
+        '</article>';
+    }).join('');
+
+    document.getElementById('crCount').textContent = data.length + ' engagements';
+
+    // summary roll-ups
+    var states = {};
+    var NAMES = { 'hawaii':'HI','california':'CA','colorado':'CO','utah':'UT','arizona':'AZ','nevada':'NV','texas':'TX','florida':'FL','oregon':'OR','washington':'WA','idaho':'ID','new mexico':'NM' };
+    var CODES = ['HI','CA','CO','UT','AZ','NV','TX','FL','OR','WA','ID','NM'];
+    var leadSum = 0;
+    var bestMult = 0;
+    var activeCount = 0;
+    data.forEach(function (row) {
+      var loc = row.Location || '';
+      var sm = loc.match(/\b([A-Z]{2})\b/g);
+      if (sm) sm.forEach(function (s) { if (CODES.indexOf(s) > -1) states[s] = 1; });
+      Object.keys(NAMES).forEach(function (nm) { if (loc.toLowerCase().indexOf(nm) > -1) states[NAMES[nm]] = 1; });
+      var ln = leadNumber(row['Tracked Leads']);
+      if (ln) leadSum += ln;
+      var mm = (row['Revenue / Result'] || '').match(/(\d+(?:\.\d+)?)×/);
+      if (mm) bestMult = Math.max(bestMult, parseFloat(mm[1]));
+      if (/^active/i.test(row.Status || '')) activeCount++;
+    });
+
+    var cells = [
+      [String(data.length), 'Client engagements'],
+      [String(activeCount), 'Active right now'],
+      [String(Object.keys(states).length || '—'), 'States served'],
+      [leadSum ? leadSum.toLocaleString() + '+' : '—', 'Tracked Meta leads']
+    ];
+    if (bestMult) cells[3] = [bestMult + '×', 'Best revenue multiple'];
+    document.getElementById('crSummary').innerHTML = cells.map(function (c) {
+      return '<div class="cr-sum"><div class="cr-sum-val">' + esc(c[0]) + '</div><div class="cr-sum-label">' + esc(c[1]) + '</div></div>';
+    }).join('');
+
+    var upd = document.getElementById('crUpdated');
+    if (live) {
+      upd.textContent = 'Live from our client tracker · updates automatically';
+      upd.classList.remove('is-stale');
+    } else {
+      upd.textContent = 'Showing the last saved snapshot';
+      upd.classList.add('is-stale');
+    }
+  }
+
+  function fallback() {
+    try { return JSON.parse(document.getElementById('crFallback').textContent); }
+    catch (e) { return []; }
+  }
+
+  render(fallback(), false);
+
+  fetch(CSV_URL, { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) {
+      var data = toObjects(parseCSV(t));
+      if (data.length) render(data, true);
+    })
+    .catch(function () { /* keep the fallback snapshot */ });
+})();
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
