@@ -563,6 +563,24 @@ h1, h2, h3, h4 {
   border: 1px solid var(--white-08);
   margin-top: 64px;
 }
+/* three equal case studies side by side */
+.case-studies-grid.case-studies-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.case-studies-grid-3 .cs-card {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+}
+.case-studies-grid-3 .cs-featured-meta { flex-wrap: wrap; gap: 8px 12px; margin-bottom: 22px; }
+.case-studies-grid-3 .cs-client-name { font-size: 1.3rem; margin-bottom: 26px; min-height: 2.8em; }
+.case-studies-grid-3 .cs-stats-row { gap: 18px 24px; flex-wrap: wrap; margin-bottom: 24px; padding-bottom: 24px; }
+.case-studies-grid-3 .cs-stat-val { font-size: 1.7rem; }
+.case-studies-grid-3 .cs-services-used { margin-bottom: 24px; }
+.case-studies-grid-3 .cs-link { margin-top: auto; }
+@media (max-width: 960px) {
+  .case-studies-grid.case-studies-grid-3 { grid-template-columns: 1fr; }
+  .case-studies-grid-3 .cs-card { padding: 36px 28px; }
+  .case-studies-grid-3 .cs-client-name { min-height: 0; }
+}
 .cs-card {
   background: var(--bg-card);
   padding: 52px 48px;
@@ -578,13 +596,6 @@ h1, h2, h3, h4 {
   background: #0F0F0E;
 }
 .cs-card.cs-card-featured:hover { background: #141410; }
-/* Flagship card sits alone in the left column — center its content so it
-   balances the taller stacked column beside it on desktop. */
-.cs-card.cs-card-flagship {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .cs-card.cs-card-coming {
   background: var(--bg-2);
   display: flex;
