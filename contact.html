@@ -229,7 +229,9 @@
           if (new URLSearchParams(location.search).get('sent') === '1') {
             var sent = document.getElementById('form-sent');
             sent.hidden = false;
-            sent.scrollIntoView({ block: 'center' });
+            window.addEventListener('load', function () {
+              sent.scrollIntoView({ block: 'center', behavior: 'instant' });
+            });
           }
         </script>
       </div>
