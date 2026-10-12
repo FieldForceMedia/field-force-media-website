@@ -227,7 +227,9 @@
         </form>
         <script>
           if (new URLSearchParams(location.search).get('sent') === '1') {
-            document.getElementById('form-sent').hidden = false;
+            var sent = document.getElementById('form-sent');
+            sent.hidden = false;
+            sent.scrollIntoView({ block: 'center' });
           }
         </script>
       </div>
