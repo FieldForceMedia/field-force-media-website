@@ -162,7 +162,12 @@
 
       <div class="contact-form reveal reveal-delay-2">
         <div class="label" style="margin-bottom:28px;">Tell Us About Your Business</div>
-        <form>
+        <div id="form-sent" role="status" hidden style="margin-bottom:28px;padding:16px 20px;border:1px solid var(--gold);color:var(--white-70);font-size:0.85rem;">
+          Thanks. We got your details and will reach out within 24 hours.
+        </div>
+        <form method="POST" action="https://ffm-forms.slate-dist.workers.dev">
+          <input type="hidden" name="_site" value="field-force" />
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;" />
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name</label>
@@ -196,7 +201,7 @@
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" />
+            <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required />
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
@@ -220,6 +225,11 @@
           <button type="submit" class="btn btn-gold btn-lg" style="width:100%;justify-content:center;">Submit. We'll Reach Out Within 24 Hours.</button>
           <p style="text-align:center;font-size:0.75rem;color:var(--white-20);margin-top:16px;letter-spacing:0.04em;">No obligation. No pressure. Just a conversation.</p>
         </form>
+        <script>
+          if (new URLSearchParams(location.search).get('sent') === '1') {
+            document.getElementById('form-sent').hidden = false;
+          }
+        </script>
       </div>
 
     </div>
