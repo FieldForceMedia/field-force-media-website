@@ -1,5 +1,6 @@
 // www -> apex (301, path and query kept); directory paths serve their index.html;
 // everything else is served from the static assets (html_handling is "none").
+// Deploys automatically from GitHub main via Cloudflare Workers Builds.
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
