@@ -20,4 +20,4 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
-Sitemap: https://www.fieldforcemedia.com/sitemap.xml
+Sitemap: https://fieldforcemedia.com/sitemap.xml

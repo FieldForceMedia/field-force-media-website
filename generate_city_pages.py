@@ -305,7 +305,7 @@ def build_page(city):
     note       = city["market_note"]
     seasonal   = city["seasonal"]
     full       = f"{name}, {state}"
-    url        = f"https://www.fieldforcemedia.com/locations/{slug}.html"
+    url        = f"https://fieldforcemedia.com/locations/{slug}.html"
 
     schema = f"""  <script type="application/ld+json">
   {{
@@ -314,7 +314,7 @@ def build_page(city):
       {{
         "@type": "MarketingAgency",
         "name": "Field Force Media",
-        "url": "https://www.fieldforcemedia.com",
+        "url": "https://fieldforcemedia.com",
         "description": "Field Force Media provides home service marketing in {full}, including paid advertising, website design, brand identity, direct mail, and marketing strategy for lawn care, window cleaning, pressure washing, painting, HVAC, and all home service trades.",
         "areaServed": {{
           "@type": "City",
@@ -363,7 +363,7 @@ def build_page(city):
   <meta property="og:site_name" content="Field Force Media" />
   <meta property="og:title" content="Home Service Marketing in {full} | Field Force Media" />
   <meta property="og:description" content="Expert marketing for home service businesses in {full}. Meta ads, websites, branding, and direct mail that grow revenue. Free strategy call." />
-  <meta property="og:image" content="https://www.fieldforcemedia.com/images/logo-full.png" />
+  <meta property="og:image" content="https://fieldforcemedia.com/images/logo-full.png" />
 {schema}
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
