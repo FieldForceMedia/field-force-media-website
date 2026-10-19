@@ -223,8 +223,8 @@ h1, h2, h3, h4 {
 .nav-links a::after { display: none; }
 .nav-links a:hover {
   color: var(--white);
-  background: rgba(201,168,76,0.09);
-  border-color: rgba(201,168,76,0.35);
+  background: rgba(46,155,255,0.09);
+  border-color: rgba(46,155,255,0.35);
 }
 .nav-cta { margin-left: 12px; }
 .nav-toggle {
@@ -273,11 +273,21 @@ h1, h2, h3, h4 {
   pointer-events: none;
   user-select: none;
 }
+.hero-mark {
+  position: absolute;
+  right: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(24vw, 330px);
+  pointer-events: none;
+  user-select: none;
+}
+.hero-mark svg { width: 100%; height: auto; display: block; }
 .hero-grid-bg { display: none; }
 .hero-gradient {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(46,155,255,0.04) 0%, transparent 70%);
+  background: none;
   pointer-events: none;
 }
 .hero-diagonal {
@@ -286,7 +296,7 @@ h1, h2, h3, h4 {
   right: 18%;
   width: 1px;
   height: 120%;
-  background: linear-gradient(to bottom, transparent 0%, rgba(46,155,255,0.3) 30%, rgba(46,155,255,0.15) 70%, transparent 100%);
+  background: rgba(46,155,255,0.18);
   transform: rotate(12deg);
   transform-origin: top center;
   pointer-events: none;
@@ -295,7 +305,7 @@ h1, h2, h3, h4 {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 200px;
-  background: linear-gradient(to top, var(--bg), transparent);
+  background: none;
   pointer-events: none;
 }
 .hero-content {
@@ -372,7 +382,7 @@ h1, h2, h3, h4 {
 .scroll-line {
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, var(--gold-border-h), transparent);
+  background: var(--gold-border-h);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
@@ -506,12 +516,12 @@ h1, h2, h3, h4 {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(to right, var(--gold), transparent);
+  background: var(--gold);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s ease;
 }
-.service-card:hover { background: #141414; transform: translateY(-2px); }
+.service-card:hover { background: var(--bg-3); transform: translateY(-2px); }
 .service-card:hover::after { transform: scaleX(1); }
 .service-card:hover .service-name { color: var(--gold); }
 .service-num {
@@ -593,7 +603,7 @@ h1, h2, h3, h4 {
 }
 .cs-card.cs-card-featured {
   border-left: 3px solid var(--gold);
-  background: #0F0F0E;
+  background: var(--bg-card);
 }
 .cs-card.cs-card-featured:hover { background: #10141A; }
 .cs-card.cs-card-coming {
@@ -912,16 +922,16 @@ h1, h2, h3, h4 {
   padding: 140px 0;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, #00101F 0%, #000A14 40%, #0A0A0A 100%);
-  border-top: 1px solid rgba(46,155,255,0.2);
-  border-bottom: 1px solid rgba(46,155,255,0.1);
+  background: #0A0A0A;
+  border-top: 0;
+  border-bottom: 0;
 }
 .cta-section::before { display: none; }
 .cta-section::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(46,155,255,0.07) 0%, transparent 70%);
+  background: none;
 }
 .cta-inner {
   position: relative;
@@ -1076,7 +1086,7 @@ h1, h2, h3, h4 {
   padding: 56px 48px;
   transition: background 0.25s ease;
 }
-.service-full-card:hover { background: #141414; }
+.service-full-card:hover { background: var(--bg-3); }
 .service-full-card .service-icon { margin-bottom: 32px; }
 .service-full-card h3 {
   font-size: 1.4rem;
@@ -1586,6 +1596,7 @@ h1, h2, h3, h4 {
     width: 100%;
   }
   .hero-visual { display: none; }
+  .hero-mark { display: none; }
   .hero-diagonal { display: none; }
   .hero .hero-actions {
     display: flex;
@@ -2277,7 +2288,7 @@ h1, h2, h3, h4 {
 .case-deep {
   border: 1px solid var(--white-08);
   border-left: 3px solid var(--gold);
-  background: #0F0F0E;
+  background: var(--bg-card);
   padding: 48px;
   margin-top: 24px;
 }
