@@ -217,7 +217,7 @@ CITIES = [
 NAV = """<nav class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo">
-      <img src="../images/logo-mark.png" alt="Field Force Media" />
+      <img width="701" height="845" src="../images/logo-mark.png" alt="Field Force Media" />
       <div class="nav-logo-text">
         <span class="line1">Field Force</span>
         <span class="line2">Media</span>
@@ -256,7 +256,7 @@ FOOTER = """<footer class="footer">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="../index.html" class="footer-logo-full">
-          <img src="../images/logo-full.png" alt="Field Force Media" />
+          <img width="900" height="783" src="../images/logo-full.png" alt="Field Force Media" />
         </a>
         <p class="footer-tagline">Full-service marketing for home service businesses. Built to grow revenue.</p>
         <div class="footer-socials">
@@ -291,6 +291,7 @@ FOOTER = """<footer class="footer">
     </div>
     <div class="footer-bottom">
       <span>© 2026 Field Force Media. All rights reserved.</span>
+      <span class="legal-links"><a href="/privacy.html">Privacy policy</a><a href="/terms.html">Terms</a></span>
       <span class="gold-text">Built for the Home Service Industry.</span>
     </div>
   </div>
@@ -343,6 +344,8 @@ def build_page(city):
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){{dataLayer.push(arguments);}}
+    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+    (function(){var c=null;try{c=localStorage.getItem('ffm-consent')}catch(e){}var v=c==='denied'?'denied':'granted';gtag('consent','default',{analytics_storage:v,ad_storage:v,ad_user_data:v,ad_personalization:v});if(c==='granted')gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});})();
     gtag('js', new Date());
 
     gtag('config', 'G-5PWLDGHFQW');
@@ -350,7 +353,7 @@ def build_page(city):
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home Service Marketing in {full} | Field Force Media</title>
-  <meta name="description" content="Field Force Media helps home service businesses in {full} grow with Meta ads, custom websites, brand identity, and direct mail. Proven systems. Free strategy call." />
+  <meta name="description" content="Home service marketing in {full}: Meta ads, custom websites, branding and direct mail from Field Force Media. Book a free strategy call." />
   <link rel="canonical" href="{url}" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -366,6 +369,7 @@ def build_page(city):
   <meta property="og:image" content="https://fieldforcemedia.com/images/logo-full.png" />
 {schema}
   <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="/css/fx.css" />
 </head>
 <body>
 
@@ -488,6 +492,7 @@ def build_page(city):
 {FOOTER}
 
 <script src="../js/main.js"></script>
+<script src="/js/fx.js" defer></script>
 </body>
 </html>"""
 
