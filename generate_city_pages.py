@@ -216,7 +216,7 @@ CITIES = [
 
 NAV = """<nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo">
+    <a href="/" class="nav-logo">
       <img width="701" height="845" src="../images/logo-mark.png" alt="Field Force Media" />
       <div class="nav-logo-text">
         <span class="line1">Field Force</span>
@@ -224,7 +224,7 @@ NAV = """<nav class="nav" id="mainNav">
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="../services.html">Services</a></li>
       <li><a href="../results.html">Results</a></li>
       <li><a href="../about.html">About</a></li>
@@ -239,7 +239,7 @@ NAV = """<nav class="nav" id="mainNav">
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner">
     <ul class="mobile-nav-links">
-      <li><a href="../index.html">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="../services.html">Services</a></li>
       <li><a href="../results.html">Results</a></li>
       <li><a href="../about.html">About</a></li>
@@ -255,7 +255,7 @@ FOOTER = """<footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="../index.html" class="footer-logo-full">
+        <a href="/" class="footer-logo-full">
           <img width="900" height="783" src="../images/logo-full.png" alt="Field Force Media" />
         </a>
         <p class="footer-tagline">Full-service marketing for home service businesses. Built to grow revenue.</p>
