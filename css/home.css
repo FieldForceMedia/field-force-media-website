@@ -72,12 +72,17 @@
 /* ---------- client banner (continuous scroll) ---------- */
 .clients { padding: 3rem 0 3rem; overflow: hidden; }
 .clients h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1rem, 1.8vw, 1.2rem); letter-spacing: -0.01em; margin: 0 0 1.6rem; color: var(--muted); }
-.marquee { display: flex; width: max-content; animation: scroll-x 70s linear infinite; }
+.marquee-scroller { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; outline-offset: 4px; }
+.marquee-scroller::-webkit-scrollbar { display: none; }
+.marquee-scroller.is-drag { cursor: grabbing; }
+.marquee-scroller.is-drag img { pointer-events: none; }
+.marquee { display: flex; width: max-content; }
+html.no-js .marquee { animation: scroll-x 70s linear infinite; }
 .marquee ul { display: flex; align-items: center; gap: 1.1rem; list-style: none; margin: 0; padding: 0 1.1rem 0 0; }
 .logo { width: 208px; height: 88px; background: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 10px 20px; flex: 0 0 auto; }
 .logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
 @keyframes scroll-x { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .marquee { animation: none; flex-wrap: wrap; width: auto; row-gap: 1.4rem; } .marquee ul[aria-hidden] { display: none; } }
+@media (prefers-reduced-motion: reduce) { .marquee ul[aria-hidden] { display: none; } }
 
 /* ---------- site showcase (featured + strip) ---------- */
 .stage { display: grid; gap: 1.6rem; align-items: center; }
