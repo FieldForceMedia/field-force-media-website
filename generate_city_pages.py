@@ -306,6 +306,7 @@ def build_page(city):
     note       = city["market_note"]
     seasonal   = city["seasonal"]
     full       = f"{name}, {state}"
+    short      = f"{name}, {abbr}"
     url        = f"https://fieldforcemedia.com/locations/{slug}.html"
 
     schema = f"""  <script type="application/ld+json">
@@ -352,7 +353,7 @@ def build_page(city):
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home Service Marketing in {full} | Field Force Media</title>
+  <title>Home Service Marketing in {short} | Field Force Media</title>
   <meta name="description" content="Home service marketing in {full}: Meta ads, custom websites, branding and direct mail from Field Force Media. Book a free strategy call." />
   <link rel="canonical" href="{url}" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
