@@ -314,7 +314,7 @@ def build_page(city):
     "@context": "https://schema.org",
     "@graph": [
       {{
-        "@type": "MarketingAgency",
+        "@type": "ProfessionalService",
         "name": "Field Force Media",
         "url": "https://fieldforcemedia.com",
         "description": "Field Force Media provides home service marketing in {full}, including paid advertising, website design, brand identity, direct mail, and marketing strategy for lawn care, window cleaning, pressure washing, painting, HVAC, and all home service trades.",
