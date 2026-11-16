@@ -53,8 +53,9 @@
   if (!/contact(\.html)?$/.test(location.pathname)) {
     var sticky = document.createElement('a');
     sticky.className = 'sticky-cta';
-    sticky.href = '/contact.html';
-    sticky.textContent = 'Book a free strategy call';
+    /* A page can point the bar somewhere else (the ads landing page scrolls to its own calendar). */
+    sticky.href = document.body.dataset.stickyHref || '/contact.html';
+    sticky.textContent = document.body.dataset.stickyText || 'Book a free strategy call';
     document.body.appendChild(sticky);
     document.body.classList.add('has-sticky');
     var showSticky = function () { sticky.classList.toggle('on', window.scrollY > window.innerHeight * 0.8); };

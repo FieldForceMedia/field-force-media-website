@@ -1,0 +1,69 @@
+/* ============================================================
+   Ads landing page (/100-leads). Builds on home.css: same tokens,
+   same cut-corner device, same entrances. Only what's new lives here.
+   ============================================================ */
+
+/* ---------- slim header: logo + one button, no menu ---------- */
+.lp-nav .nav-inner { justify-content: space-between; }
+.lp-nav .nav-cta { margin-left: auto; min-height: 46px; padding: 0.8rem 1.3rem; }
+@media (max-width: 900px) {
+  .lp-nav .nav-cta { display: inline-flex; }
+  .lp-nav .nav-inner { padding: 0 20px; height: 72px; }
+  .lp-nav .nav-logo img { height: 40px; }
+}
+@media (max-width: 420px) { .lp-nav .nav-logo-text { display: none; } }
+
+/* ---------- hero ---------- */
+.lp-hero { padding-top: 11rem; }
+.lp-hero h1 { max-width: 14ch; }
+.lp-hero .hero2-sub { max-width: 40ch; }
+.lp-hero .fine { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 1.6rem 0 0; max-width: 52ch; }
+@media (max-width: 959px) { .lp-hero { padding-top: 8rem; } }
+
+/* ---------- case studies: the ad on one side, the numbers on the other ---------- */
+.cases { display: grid; gap: 5.5rem; }
+@media (max-width: 700px) { .cases { gap: 4rem; } }
+.case { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 900px) {
+  .case { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 4.5rem; }
+  .case:nth-child(even) .case-ad { order: 2; }
+}
+.case-ad { margin: 0; justify-self: center; width: min(100%, 380px); }
+@media (max-width: 899px) { .case-ad { width: min(78%, 300px); } }
+.case-ad .frame { background: var(--tone); padding: 10px; }
+.case-ad img, .case-ad video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--tone-2); }
+.case-ad figcaption { color: var(--muted); font-size: 0.82rem; line-height: 1.5; margin-top: 0.8rem; text-align: center; }
+
+.case-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.5rem, 2.8vw, 2rem); letter-spacing: -0.03em; line-height: 1.1; margin: 0; }
+.case-where { color: var(--muted); font-weight: 600; margin: 0.35rem 0 0; }
+/* The one loud element on the page: each client's headline result. */
+.case-big { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.2rem 1rem; margin: 1.6rem 0 0.4rem; }
+.case-big b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(4rem, 11vw, 7.5rem); line-height: 0.85; letter-spacing: -0.06em; color: var(--a); font-variant-numeric: tabular-nums; }
+.case-big span { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.05rem, 2vw, 1.35rem); letter-spacing: -0.02em; max-width: 14ch; line-height: 1.2; }
+.case-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.8rem 0 0; padding: 1.4rem 0 0; border-top: 3px solid var(--tone-2); }
+.case-stats div { min-width: 0; }
+.case-stats dt { color: var(--muted); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.25rem; }
+.case-stats dd { margin: 0; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.05rem, 2.2vw, 1.4rem); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.case-when { color: var(--muted); font-size: 0.86rem; margin: 1rem 0 0; }
+
+/* ---------- guarantee terms ---------- */
+.lp-terms { color: var(--muted); font-size: 0.9rem; line-height: 1.65; max-width: 80ch; margin: 3rem 0 0; }
+
+/* ---------- booking ---------- */
+.book { scroll-margin-top: 80px; }
+.book-grid { display: grid; gap: 2.4rem; }
+@media (min-width: 1000px) { .book-grid { grid-template-columns: 0.75fr 1.25fr; gap: 4rem; align-items: start; } }
+.book-list { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 0.9rem; }
+.book-list li { display: grid; grid-template-columns: 22px 1fr; gap: 0.8rem; line-height: 1.55; color: var(--muted); }
+.book-list li::before { content: ""; width: 12px; height: 12px; margin-top: 0.45em; background: var(--a); clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 30% 100%, 0 70%); }
+.book-frame { background: #fff; padding: 8px; }
+.book-frame iframe { display: block; width: 100%; height: 880px; border: 0; }
+@media (max-width: 759px) { .book-frame iframe { height: 960px; } .at-book .sticky-cta { translate: 0 100%; } }
+
+/* ---------- footer ---------- */
+.lp-foot { background: #0A0A0A; color: rgba(255,255,255,0.6); padding: 2.4rem 0; font-size: 0.85rem; }
+.lp-foot .w2 { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; }
+.lp-foot a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.lp-foot a:hover { color: #fff; }
+.lp-foot nav { display: flex; gap: 1.4rem; }
+@media (max-width: 759px) { .has-sticky .lp-foot { padding-bottom: 80px; } }
