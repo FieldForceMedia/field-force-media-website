@@ -15,7 +15,7 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>100 Qualified Leads in 90 Days, Guaranteed | Field Force Media</title>
-  <meta name="description" content="Meta ads for home service businesses: 100 qualified leads in 90 days, guaranteed. If we fall short, we keep running your ads free until you get there." />
+  <meta name="description" content="Meta ads for home service businesses: 100 qualified leads in 90 days, guaranteed, or we work for free." />
   <!-- Ads landing page: kept out of search so it doesn't compete with the main site. -->
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://fieldforcemedia.com/100-leads/" />
@@ -27,7 +27,7 @@
   <meta property="og:url" content="https://fieldforcemedia.com/100-leads/" />
   <meta property="og:site_name" content="Field Force Media" />
   <meta property="og:title" content="100 qualified leads in 90 days. Guaranteed." />
-  <meta property="og:description" content="If we fall short, we keep running your ads free until you get there. Real results from real ad accounts." />
+  <meta property="og:description" content="Or we work for free. Real results from real ad accounts." />
   <meta property="og:image" content="https://fieldforcemedia.com/images/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/css/styles.css" />
@@ -52,12 +52,12 @@
     <div class="hero2-grid">
       <div>
         <h1>100 qualified leads in 90 days. <span class="hl">Guaranteed.</span></h1>
-        <p class="hero2-sub">If we don&#8217;t hit 100, we keep running your ads for free until we do.</p>
+        <p class="hero2-sub lp-or">Or we work for free.</p>
         <div class="hb-row">
           <a href="#book" class="hb hb-gold" data-magnetic>Book your call</a>
           <a href="#results" class="hb hb-line">See the results</a>
         </div>
-        <p class="fine">Meta ads for home service businesses. We agree with you on what counts as a qualified lead before anything goes live.</p>
+        <p class="fine">If we don&#8217;t hit 100 qualified leads in your first 90 days, we&#8217;ll work for free until we do. You only cover the ad spend.</p>
       </div>
       <div class="hero2-mark hm" data-parallax role="img" aria-label="Field Force Media mark"><svg viewBox="293 239 701 845" aria-hidden="true"><polygon class="p1" fill="currentColor" points="293,239 961,239 838,354 414,354 414,445 684,445 562,559 414,559 414,983 293,875"/><polygon class="p2" points="765,451 993,451 881,559 657,559"/><polygon class="p3" fill="currentColor" points="487,628 876,628 764,736 596,736 596,986 487,1084"/></svg></div>
     </div>
@@ -92,7 +92,7 @@
     </div>
     <div class="cases">
       <article class="case">
-        <figure class="case-ad rv"><div class="frame cut" style="--cut:14px"><img src="/images/ads/bluember.jpg" alt="bluEmber Lighting Meta ad" width="1080" height="1350" loading="lazy" decoding="async"></div><figcaption>One of the bluEmber Lighting ads we ran.</figcaption></figure>
+        <figure class="case-ad rv"><button type="button" class="ad-play frame cut" style="--cut:14px" data-video="/images/ads/bluember.mp4" aria-label="Play the bluEmber Lighting ad"><img src="/images/ads/bluember.jpg" alt="bluEmber Lighting video ad: Up once. Up year-round." width="720" height="1280" loading="lazy" decoding="async"><span class="ad-play-i" aria-hidden="true"></span></button><figcaption>One of the bluEmber Lighting ads we ran. Tap to play.</figcaption></figure>
         <div class="case-info rv" style="--d:80ms">
           <h3 class="case-name">bluEmber Lighting</h3>
           <p class="case-where">Permanent lighting &middot; Fresno, CA and Bozeman, MT</p>
@@ -102,7 +102,6 @@
         </div>
       </article>
       <article class="case">
-        <figure class="case-ad rv"><div class="frame cut" style="--cut:14px"><img src="/images/ads/valley.jpg" alt="Valley Pest Control Meta ad" width="1080" height="1350" loading="lazy" decoding="async"></div><figcaption>One of the Valley Pest Control ads we ran.</figcaption></figure>
         <div class="case-info rv" style="--d:80ms">
           <h3 class="case-name">Valley Pest Control</h3>
           <p class="case-where">Pest control &middot; Clovis / Fresno, CA</p>
@@ -112,7 +111,6 @@
         </div>
       </article>
       <article class="case">
-        <figure class="case-ad rv"><div class="frame cut" style="--cut:14px"><img src="/images/ads/island.jpg" alt="Island Scape North Shore Meta ad" width="1080" height="1350" loading="lazy" decoding="async"></div><figcaption>One of the Island Scape North Shore ads we ran.</figcaption></figure>
         <div class="case-info rv" style="--d:80ms">
           <h3 class="case-name">Island Scape North Shore</h3>
           <p class="case-where">Lawn care &middot; North Shore, O&#8217;ahu</p>
@@ -122,7 +120,6 @@
         </div>
       </article>
       <article class="case">
-        <figure class="case-ad rv"><div class="frame cut" style="--cut:14px"><img src="/images/ads/source.jpg" alt="Source Pest Control Meta ad" width="1080" height="1350" loading="lazy" decoding="async"></div><figcaption>One of the Source Pest Control ads we ran.</figcaption></figure>
         <div class="case-info rv" style="--d:80ms">
           <h3 class="case-name">Source Pest Control</h3>
           <p class="case-where">Pest control &middot; Temecula, CA</p>
@@ -199,6 +196,17 @@
       document.body.classList.toggle('at-book', es[0].isIntersecting);
     }, { threshold: 0.05 }).observe(book);
   })();
+  /* Ad examples: show the poster, play the real ad on tap. */
+  document.querySelectorAll('.ad-play').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = document.createElement('video');
+      v.src = b.dataset.video; v.controls = true; v.playsInline = true; v.autoplay = true;
+      v.poster = b.querySelector('img').src;
+      v.className = 'frame cut'; v.style.setProperty('--cut', '14px');
+      b.replaceWith(v); v.play().catch(function () {});
+      if (typeof gtag === 'function') gtag('event', 'ad_example_play', { ad: b.dataset.video });
+    });
+  });
   /* Count clicks on "Book your call" in Google Analytics. */
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href="#book"]');
