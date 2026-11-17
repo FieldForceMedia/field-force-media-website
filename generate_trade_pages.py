@@ -86,7 +86,7 @@ COMMON_FAQS = [
     ("How fast will I get leads?",
      "Our goal is your first qualified lead within 14 days of having your access and assets. Most of that time is building creative and getting your accounts ready."),
     ("Do I have to sign a long contract?",
-     "No. Everything we offer is month to month: cancel any time with 15 days' written notice."),
+     "No. Everything we offer is month to month: cancel any time with 15 days' written notice. Websites come with a monthly care plan (hosting, updates and support); if you leave, you can buy the site outright (landing page $999, full site $1,999, half that after 36 months on a care plan) or keep it on our basic plan."),
 ]
 
 
