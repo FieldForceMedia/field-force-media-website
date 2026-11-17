@@ -23,6 +23,8 @@
 .cookie-btns button:hover { border-color: var(--gold); }
 .cookie-btns button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 @media (max-width: 759px) { .cookie-bar { left: 8px; right: 8px; bottom: 8px; } }
+/* The GoHighLevel chat bubble waits until the visitor answers the cookie bar, so it never covers the buttons. */
+body:has(> .cookie-bar) chat-widget { display: none; }
 
 /* ---- Sticky call-to-action bar (phones only) ---- */
 .sticky-cta { display: none; }

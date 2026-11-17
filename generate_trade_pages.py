@@ -415,6 +415,8 @@ def build(t):
 
 <script src="js/main.js"></script>
 <script src="/js/fx.js" defer></script>
+<!-- GoHighLevel chat + phone widget -->
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6afcc076f31f8c02e6114837"></script>
 </body>
 </html>
 """

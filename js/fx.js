@@ -63,6 +63,30 @@
     showSticky();
   }
 
+  /* ---- GoHighLevel chat bubble (loaded at the end of every page) ----
+     On phones it would sit on the sticky "Book a call" bar, so lift it above the bar.
+     The bubble lives in the widget's shadow DOM, so the style goes in there. */
+  if (document.body.classList.contains('has-sticky')) {
+    var tries = 0;
+    var liftChat = setInterval(function () {
+      var cw = document.querySelector('chat-widget');
+      var root = cw && cw.shadowRoot;
+      if (root && root.querySelector('#lc_text-widget--btn')) {
+        var css = '@media (max-width: 759px) { #lc_text-widget, #lc_text-widget--btn { bottom: 72px !important; } }';
+        try {
+          var sheet = new CSSStyleSheet();
+          sheet.replaceSync(css);
+          root.adoptedStyleSheets = root.adoptedStyleSheets.concat(sheet); /* survives the widget re-rendering */
+        } catch (e) {
+          var st = document.createElement('style');
+          st.textContent = css;
+          root.appendChild(st);
+        }
+        clearInterval(liftChat);
+      } else if (++tries > 60) { clearInterval(liftChat); }
+    }, 500);
+  }
+
   if (!fx) return;
 
   /* ---- Magnetic primary button: leans up to 6px toward the pointer. Only on [data-magnetic]. ---- */
