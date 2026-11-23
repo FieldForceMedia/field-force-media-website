@@ -96,7 +96,7 @@ TRADES = [
         "trade": "Window Cleaning",
         "plural": "window cleaning companies",
         "short": "window cleaning",
-        "title": "Window Cleaning Marketing: Meta Ads &amp; Websites | Field Force Media",
+        "title": "Window Cleaning Marketing: Ads &amp; Websites | Field Force Media",
         "desc": "Marketing for window cleaning companies: Meta ads, websites and branding. NEO Window Cleaning saw a 10.7x return on ad spend. Book a free strategy call.",
         "h1": "Marketing for<br><span class=\"gold\">Window Cleaning Companies.</span>",
         "lede": "Meta ads, websites and branding for window cleaning businesses, from a home service marketing agency that has run ads and built sites for window crews in California, Nevada, Colorado and Hawaii.",
