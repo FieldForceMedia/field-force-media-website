@@ -1202,6 +1202,10 @@ h1, h2, h3, h4 {
   padding: 48px;
 }
 .form-group { margin-bottom: 24px; }
+.form-group.form-consent { display: flex; gap: 12px; align-items: flex-start; }
+.form-group.form-consent input[type="checkbox"] { flex: none; width: 18px; height: 18px; margin: 2px 0 0; padding: 0; -webkit-appearance: auto; appearance: auto; accent-color: var(--gold, #2E9BFF); cursor: pointer; }
+.form-group.form-consent label { margin: 0; font-family: 'Inter', sans-serif; font-size: 0.75rem; line-height: 1.55; letter-spacing: 0; text-transform: none; color: var(--white-45); cursor: pointer; }
+.form-group.form-consent label a { color: inherit; text-decoration: underline; }
 .form-group label {
   display: block;
   font-family: 'Oswald', sans-serif;
