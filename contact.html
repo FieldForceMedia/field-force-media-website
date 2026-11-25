@@ -246,6 +246,7 @@
           if (new URLSearchParams(location.search).get('sent') === '1') {
             var sent = document.getElementById('form-sent');
             sent.hidden = false;
+            if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'contact' });
             window.addEventListener('load', function () {
               sent.scrollIntoView({ block: 'center', behavior: 'instant' });
             });

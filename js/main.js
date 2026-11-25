@@ -249,3 +249,14 @@ toggle?.addEventListener('click', () => {
     io.observe(el);
   });
 })();
+
+/* Lead tracking (2026-11-24): count call, text and email taps in GA4. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"], a[href^="mailto:"]');
+    if (!a || typeof gtag !== 'function') return;
+    var h = a.getAttribute('href');
+    var name = h.indexOf('tel:') === 0 ? 'phone_call_click' : h.indexOf('sms:') === 0 ? 'text_click' : 'email_click';
+    gtag('event', name, { link_url: h, page_location: location.href });
+  });
+})();
