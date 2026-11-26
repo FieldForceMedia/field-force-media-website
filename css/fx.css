@@ -22,7 +22,13 @@
 .cookie-btns button[data-c="granted"] { background: var(--white); color: #0A0A0A; border-color: var(--white); }
 .cookie-btns button:hover { border-color: var(--gold); }
 .cookie-btns button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-@media (max-width: 759px) { .cookie-bar { left: 8px; right: 8px; bottom: 8px; } }
+@media (max-width: 759px) {
+  /* Compact on phones (Josh 2026-11-25): one short line of text, small buttons beside it. */
+  .cookie-bar { left: 8px; right: 8px; bottom: 8px; gap: 10px; padding: 8px 10px; flex-wrap: nowrap; font-size: 0.72rem; line-height: 1.35; }
+  .cookie-bar p { flex: 1 1 auto; }
+  .cookie-btns { gap: 6px; flex-shrink: 0; }
+  .cookie-btns button { min-height: 40px; padding: 0 12px; font-size: 0.72rem; }
+}
 /* The GoHighLevel chat bubble waits until the visitor answers the cookie bar, so it never covers the buttons. */
 body:has(> .cookie-bar) chat-widget { display: none; }
 

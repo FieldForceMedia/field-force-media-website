@@ -17,7 +17,7 @@
     bar.setAttribute('role', 'region');
     bar.setAttribute('aria-label', 'Cookie choice');
     bar.innerHTML =
-      '<p>We use cookies to see which pages are useful and to measure our ads. The site works the same either way. ' +
+      '<p>We use cookies to measure our ads. The site works either way. ' +
       '<a href="/privacy.html">Privacy policy</a></p>' +
       '<div class="cookie-btns"><button type="button" data-c="denied">Decline</button>' +
       '<button type="button" data-c="granted">Accept</button></div>';
