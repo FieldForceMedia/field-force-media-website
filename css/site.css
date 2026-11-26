@@ -1,0 +1,134 @@
+/* ============================================================
+   Inner pages in the homepage look (2026-11-25).
+   Loaded after styles.css, home.css, lp.css and home-m.css.
+   Pattern on every page: short hero + one button -> proof -> what we do
+   -> mid-page book band -> questions (closed) -> closing book block.
+   Off-white (Paper) for big light surfaces on black; white only for accents.
+   ============================================================ */
+
+/* ---------- page hero (shorter than the homepage hero) ---------- */
+.phero { padding: 7rem 0 3.4rem; overflow: hidden; isolation: isolate; }
+.phero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(var(--accent-rgb),0.06); clip-path: polygon(78% 0, 79% 0, 67% 100%, 66% 100%); }
+.phero h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; letter-spacing: -0.04em; line-height: 1.02; font-size: clamp(2.2rem, 9vw, 4.4rem); margin: 0; max-width: 17ch; text-wrap: balance; text-transform: none; }
+.phero h1 .hl, .phero h1 .gold { color: var(--a); }
+.phero-sub { color: var(--muted); font-size: 1.08rem; line-height: 1.6; max-width: 54ch; margin: 1.1rem 0 1.6rem; }
+.phero-fine { color: var(--muted); font-size: 0.86rem; line-height: 1.5; margin: 0.9rem 0 0; }
+.phero .hb { width: 100%; }
+.crumbs { font-size: 0.82rem; color: var(--muted); margin: 0 0 1rem; }
+.crumbs a { color: inherit; text-decoration: none; }
+.crumbs a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 899px) { .phero h1 br { display: none; } }
+@media (min-width: 900px) { .phero { padding: 9.5rem 0 5rem; } .phero .hb { width: auto; } }
+
+/* ---------- section helpers ---------- */
+.hsec .lp-h + .lp-lede { margin-bottom: 0; }
+.plain a, .do-trades a { color: inherit; font-weight: inherit; text-decoration: none; }
+.plain a:hover, .plain a:focus-visible { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Mid-page book band (reuses .svc-cta from home.css) */
+.book-band { margin-top: 2.6rem; }
+@media (max-width: 759px) { .svc-cta { padding: 1.6rem 1.3rem; } .svc-cta .hb { width: 100%; } }
+
+/* Service rows with what's included (services page) */
+.do-list.wide a { gap: 0.35rem; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0.6rem 0 0; padding: 0; }
+.tags li { font-size: 0.8rem; font-weight: 600; line-height: 1.3; padding: 0.35rem 0.6rem; background: var(--tone-2); color: var(--fg); }
+@media (min-width: 900px) {
+  .do-list.wide { grid-template-columns: repeat(2, 1fr); gap: 0 3rem; }
+  .do-list.wide.three { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Trade cards: one result each, links to the trade page */
+.tcards { display: grid; gap: 12px; margin-top: 1.8rem; }
+@media (min-width: 700px) { .tcards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .tcards { grid-template-columns: repeat(4, 1fr); } }
+.tcard { display: flex; flex-direction: column; background: var(--paper); color: #0A0A0A; padding: 1.3rem 1.3rem 1.2rem; text-decoration: none; --cut: 14px; transition: background .18s; }
+.tcard:hover { background: #fff; }
+.tcard b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.15rem; letter-spacing: -0.02em; }
+.tcard .big { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.3rem; letter-spacing: -0.05em; line-height: 1; color: var(--accent-d); margin: 0.9rem 0 0.3rem; font-variant-numeric: tabular-nums; }
+.tcard span { color: rgba(10,10,10,0.7); font-size: 0.9rem; line-height: 1.45; }
+.tcard .go { margin-top: auto; padding-top: 1rem; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: #0A0A0A; }
+
+/* Results cards: 5 across fits poorly, so allow 3 on desktop when a page has 3/5/6 */
+@media (min-width: 900px) { .rtrack.r3 { grid-template-columns: repeat(3, 1fr); } .rtrack.r1 { grid-template-columns: minmax(0, 360px); } .rtrack.r2 { grid-template-columns: repeat(2, minmax(0, 360px)); } }
+.rtrack.r1 .rcard { flex-basis: 100%; }
+.rcard-what { margin: 1rem 0 0; font-size: 0.86rem; line-height: 1.5; color: rgba(10,10,10,0.72); }
+
+/* Case stories, closed by default (results + trade pages) */
+.stories { margin: 1.6rem 0 0; max-width: 860px; }
+.stories .faq-item { border-color: rgba(255,255,255,0.14); }
+.s-light .stories .faq-item { border-color: rgba(10,10,10,0.16); }
+.stories .faq-q, .faq3 .faq-q { color: var(--fg); }
+.stories .faq-a, .faq3 .faq-a { color: var(--muted); }
+.stories .faq-a p { margin: 0 0 0.6rem; }
+.stories .faq-a b { color: var(--fg); }
+
+/* Proof card beside text (about + city pages) */
+.split { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 900px) { .split { grid-template-columns: 1.15fr 0.85fr; gap: 4rem; } }
+.split > div > p { color: var(--muted); line-height: 1.65; margin: 0 0 1rem; max-width: 58ch; font-size: 1.03rem; }
+.split .rcard { max-width: 380px; }
+
+/* Value list (about page) */
+.vals { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0; }
+.vals li { padding: 1.1rem 0; border-top: 3px solid var(--tone-2); }
+.vals b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; letter-spacing: -0.02em; margin-bottom: 0.3rem; }
+.vals span { color: var(--muted); line-height: 1.55; }
+@media (min-width: 900px) { .vals { grid-template-columns: repeat(4, 1fr); gap: 0 2rem; } }
+
+/* Video testimonials sit on a dark home-style section */
+.hsec .video-testimonials, .hsec.vt { background: var(--bg); }
+.hsec .vtc-wrap { margin-top: 1.8rem; }
+
+/* 404 */
+.nf { min-height: 70vh; display: flex; align-items: center; }
+.nf .hb-row { margin-top: 1.6rem; }
+.nf .hb-row .hb { flex: 1 1 220px; }
+@media (min-width: 700px) { .nf .hb-row .hb { flex: 0 0 auto; } }
+.nf-links { margin: 1.4rem 0 0; color: var(--muted); }
+
+/* ---------- theme-only pages (privacy, terms): same hero look, wording untouched ---------- */
+.page-hero.ph-theme { background: #0A0A0A; border-bottom: 0; padding: 7rem 0 2.6rem; text-align: left; }
+.page-hero.ph-theme::after { display: none; }
+.page-hero.ph-theme h1 { font-family: 'Montserrat', sans-serif; text-transform: none; font-size: clamp(2.2rem, 8vw, 3.8rem); line-height: 1.02; margin: 0 0 0.8rem; text-align: left; }
+.page-hero.ph-theme p { margin: 0; text-align: left; max-width: 56ch; }
+.page-hero.ph-theme .page-hero-content { text-align: left; }
+@media (min-width: 900px) { .page-hero.ph-theme { padding: 9.5rem 0 3.4rem; } }
+.legal { max-width: 760px; }
+
+/* Non-link rows in the do-list (services page) */
+.do-list .row { display: grid; gap: 0.35rem; padding: 1.1rem 0; border-bottom: 3px solid var(--tone-2); }
+.do-list li:first-child .row { border-top: 3px solid var(--tone-2); }
+.do-list .row b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; letter-spacing: -0.03em; }
+.do-list .row span { color: var(--muted); line-height: 1.5; }
+@media (min-width: 900px) { .do-list .row, .do-list li:first-child .row { border-top: 3px solid var(--tone-2); border-bottom: 0; padding-top: 1.4rem; } }
+
+/* "What's included" (services page): closed on phones so the page stays short */
+.inc { margin-top: 0.5rem; }
+.inc summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.85rem; color: var(--a); }
+.inc summary::-webkit-details-marker { display: none; }
+.inc summary::after { content: "+"; font-size: 1.1rem; line-height: 1; }
+.inc[open] summary::after { content: "\2212"; }
+.inc .tags { margin-top: 0.2rem; }
+
+/* Trade cards: two per row on phones */
+@media (max-width: 699px) {
+  .tcards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tcard { padding: 1rem 0.9rem; --cut: 10px; }
+  .tcard b { font-size: 0.95rem; }
+  .tcard .big { font-size: 1.7rem; margin-top: 0.6rem; }
+  .tcard span { font-size: 0.8rem; }
+  .tcard .go { display: none; }
+}
+
+/* Video testimonials on a light section: dark names, swipe the pair on phones */
+.s-light .vtc-person { color: var(--fg); }
+.s-light .vtc-biz { color: var(--a); }
+.s-light .vtc-card .vtc-media { border-color: rgba(10,10,10,0.12); }
+@media (max-width: 759px) {
+  .vt .vtc-track.is-pair { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
+  .vt .vtc-track.is-pair::-webkit-scrollbar { display: none; }
+  .vt .vtc-track.is-pair .vtc-card { flex: 0 0 68vw; width: 68vw; scroll-snap-align: start; }
+}
+/* Two dark sections in a row get a hairline between them */
+.s-dark + .cta3 { border-top: 1px solid rgba(255,255,255,0.08); }

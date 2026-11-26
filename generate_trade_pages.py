@@ -20,50 +20,58 @@ SRC = (ROOT / "results.html").read_text(encoding="utf-8")
 
 # --- shared chrome, lifted from results.html --------------------------------
 GA_BLOCK = SRC[SRC.index("  <!-- Google tag (gtag.js) -->"):SRC.index("  <meta name=\"viewport\"")]
-NAV = SRC[SRC.index("<nav class=\"nav\""):SRC.index("<div class=\"page-hero\">")]
+NAV = SRC[SRC.index("<nav class=\"nav\""):SRC.index("<header class=\"h2s s-dark phero\">")]
 NAV = NAV.replace(' style="color:var(--gold);"', "")  # no page is "current" in the nav
 FOOTER = SRC[SRC.index("<footer class=\"footer\">"):SRC.index("</footer>") + len("</footer>")]
 
-ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'
+# (arrow icon no longer used)
+_ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'
 
 
-def case(c):
-    blocks = "".join(
-        f'\n          <div class="case-deep-block">\n            <div class="case-deep-k">{k}</div>\n            <p>{v}</p>\n          </div>'
-        for k, v in c["story"]
-    )
-    stats = "\n".join(
-        f'          <div class="cd-stat"><div class="cd-stat-label">{label}</div><div class="cd-stat-val{" gold" if gold else ""}">{val}</div></div>'
-        for label, val, gold in c["stats"]
-    )
-    return f"""
-    <article class="case-deep reveal">
-      <div class="case-deep-head">
-        <div class="case-deep-tags">
-          <span class="cs-industry-tag">{c["tag"]}</span>
-          <span class="cs-location">{c["where"]}</span>
-        </div>
-        <h3 class="case-deep-name">{c["name"]}</h3>
-      </div>
-      <div class="case-deep-body">
-        <div class="case-deep-story">{blocks}
-        </div>
-        <div class="case-deep-stats">
-{stats}
-        </div>
-      </div>
-      <a href="results.html" class="cs-link case-deep-cta">See all client results
-        {ARROW}
-      </a>
-    </article>
-"""
+def case_card(c):
+    """One result card (same look as the homepage cards)."""
+    k = c["card"]
+    logo = (f'\n          <div class="rcard-logo"><img src="images/clients/{k["logo"][0]}" alt="" width="{k["logo"][1]}" height="{k["logo"][2]}" loading="lazy" decoding="async"></div>'
+            if k["logo"] else "")
+    stats = "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a, b in k["stats"])
+    return f"""        <article class="rcard cut" aria-label="{strip_tags(c["name"])}">{logo}
+          <h3 class="rcard-name">{c["name"]}</h3>
+          <p class="rcard-trade">{k["trade"]}</p>
+          <p class="rcard-big"><b>{k["big"]}</b><span>{k["big_label"]}</span></p>
+          <dl class="rcard-stats">{stats}</dl>
+          <p class="rcard-when">{k["when"]}</p>
+        </article>"""
+
+
+def case_story(c):
+    """The challenge / what we ran, in a closed panel under the cards (words stay on the page)."""
+    body = "".join(f"<p><b>{k}.</b> {v}</p>" for k, v in c["story"])
+    return (f'      <details class="faq-item">\n'
+            f'        <summary class="faq-q">How we did it: {c["name"]}</summary>\n'
+            f'        <div class="faq-a">{body}</div>\n'
+            f'      </details>')
+
+
+SITE_SHOTS = {
+    "slate": ("Slate Window Washing", "https://slatewindowwashing.com"),
+    "island": ("Island Scape North Shore", "https://islandscapeoahu.com"),
+    "pacific": ("Pacific Breeze Window Cleaning", "https://pacificbreezewindowcleaning.com"),
+    "rrp": ("Red Rock Palms", ""), "triumph": ("Triumph Services", ""), "source": ("Source Pest Control", ""),
+    "valley": ("Valley Pest Control", ""), "mcw": ("My Clean Windows", ""), "hydro": ("HydroSpark", ""),
+}
+
+
+def site_shot(key):
+    name, url = SITE_SHOTS[key]
+    inner = f'<img src="images/work/{key}-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"><span>{name}</span>'
+    return f'<li><a href="{url}" target="_blank" rel="noopener">{inner}</a></li>' if url else f"<li><div>{inner}</div></li>"
 
 
 def faq_html(faqs):
     out = []
     for i, (q, a) in enumerate(faqs):
         out.append(
-            f'      <details class="faq-item"{" open" if i == 0 else ""}>\n'
+            f'      <details class="faq-item">\n'
             f'        <summary class="faq-q">{q}</summary>\n'
             f'        <div class="faq-a">{a}</div>\n'
             f'      </details>'
@@ -103,6 +111,7 @@ TRADES = [
         "cases_sub": "Numbers from the client's own Meta ad account or their books, with the time frame it took.",
         "cases": [
             {"tag": "Window Cleaning", "where": "Fresno, CA", "name": "NEO Window Cleaning",
+             "card": {"logo": None, "trade": "Window cleaning &middot; Fresno, CA", "big": "10.7&times;", "big_label": "return on ad spend", "stats": [("Month 1 revenue", "$8K+"), ("Year 1 projected", "$200K+")], "when": "Meta ads"},
              "story": [("The Challenge", "A newer window cleaning company with capacity to spare and no reliable way to fill the calendar week to week."),
                        ("What We Ran", "Meta advertising: offer, creative, and targeting built specifically for local window cleaning demand.")],
              "stats": [("Return on ad spend", "10.7×", True), ("Month 1 revenue", "$8K+", False),
@@ -110,9 +119,7 @@ TRADES = [
         ],
         "extra_proof": "Hear it from the owners of NEO Window Cleaning and Pacific Breeze Window Cleaning in their own words on our <a href=\"results.html\">results page</a>.",
         "sites_h2": "Window cleaning sites we've built.",
-        "sites": [("Slate Window Washing", "https://slatewindowwashing.com"),
-                  ("Pacific Breeze Window Cleaning", "https://pacificbreezewindowcleaning.com"),
-                  ("HydroSpark", "/#work")],
+        "sites": ["slate", "pacific", "hydro"],
         "cpl_faq": None,
         "services": [
             ("Meta Ads", "Facebook and Instagram campaigns that put your crew in front of homeowners in your service area, with offers and creative built for window cleaning."),
@@ -134,18 +141,20 @@ TRADES = [
         "cases_sub": "Numbers from the client's own Meta ad account, with the time frame it took.",
         "cases": [
             {"tag": "Pest Control", "where": "Clovis / Fresno, CA", "name": "Valley Pest Control",
+             "card": {"logo": ("valley.png", 520, 148), "trade": "Pest control &middot; Clovis / Fresno, CA", "big": "6.2&times;", "big_label": "return on ad spend", "stats": [("Contracts signed", "$19K+ in 9 wks"), ("Leads", "148")], "when": "Jul 8 &ndash; Oct 19, 2026"},
              "story": [("The Challenge", "Strong local reputation, a clear guarantee to sell, and no paid channel turning that into new signed accounts."),
                        ("What We Ran", "Meta advertising anchored on the Total Shield guarantee and the same-technician promise, driving to phone and form, plus the landing page behind the ads.")],
              "stats": [("Return on ad spend", "6.2×", True), ("Contracts signed", "$19K+", True),
                        ("Contracts signed in", "9<span>wks</span>", False), ("Leads, Jul 8 &ndash; Oct 19, 2026", "148", True)]},
             {"tag": "Pest Control", "where": "Temecula, CA", "name": "Source Pest Control",
+             "card": {"logo": ("source.png", 500, 135), "trade": "Pest control &middot; Temecula, CA", "big": "91", "big_label": "leads in 5 weeks", "stats": [("Cost per lead", "$35.22"), ("Ad spend", "$3,205")], "when": "Oct 8 &ndash; Nov 11, 2026"},
              "story": [("What We Ran", "A fast, call-first website that sends every quote request straight to the owner, plus Meta ad campaigns tracked in the client's own ad account.")],
              "stats": [("Leads, Oct 8 &ndash; Nov 11, 2026", "91", True), ("Time frame", "5<span>wks</span>", False),
                        ("Ad spend", "$3,205", False), ("Cost per lead", "$35.22", True)]},
         ],
         "extra_proof": None,
         "sites_h2": "Pest control sites we've built.",
-        "sites": [("Valley Pest Control", "/#work"), ("Source Pest Control", "/#work")],
+        "sites": ["valley", "source"],
         "cpl_faq": ("What do Meta ad leads cost for a pest control company?",
                     "It depends on your market, your offer and the season, so we won't quote a number before we've seen your business. For reference: Valley Pest Control paid $34.52 per lead (148 leads, Jul 8 &ndash; Oct 19, 2026) and Source Pest Control paid $35.22 per lead (91 leads, Oct 8 &ndash; Nov 11, 2026)."),
         "services": [
@@ -168,6 +177,7 @@ TRADES = [
         "cases_sub": "The starting point, the system we built, and the numbers that followed.",
         "cases": [
             {"tag": "Lawn Care &amp; Landscaping", "where": "North Shore, O'ahu, Hawaii", "name": "Island Scape North Shore LLC",
+             "card": {"logo": ("island-dark.png", 305, 300), "trade": "Lawn care &middot; O&#8217;ahu, HI", "big": "17.5&times;", "big_label": "revenue growth", "stats": [("Monthly revenue", "$2K &rarr; $35K"), ("Cost per lead", "$27.79")], "when": "Over 14 months"},
              "story": [("The Challenge", "A skilled operator stuck at $2,000/month: no website that converted, no ad engine, no brand. A great service business that looked like a side hustle."),
                        ("What We Ran", "Website redesign, Meta advertising, brand identity, local SEO, and direct mail, built to work as one system. Meta ads brought in 42 leads at $27.79 each (Nov &ndash; Dec 2025).")],
              "stats": [("Starting revenue", "$2K<span>/mo</span>", False), ("Peak revenue", "$35K<span>/mo</span>", True),
@@ -175,7 +185,7 @@ TRADES = [
         ],
         "extra_proof": None,
         "sites_h2": "Lawn and landscape sites we've built.",
-        "sites": [("Island Scape North Shore", "https://islandscapeoahu.com"), ("Red Rock Palms", "/#work")],
+        "sites": ["island", "rrp"],
         "cpl_faq": None,
         "services": [
             ("Meta Ads", "Facebook and Instagram campaigns that fill your routes with homeowners in the neighborhoods you already serve."),
@@ -197,6 +207,7 @@ TRADES = [
         "cases_sub": "Numbers from the client's own Meta ad account, with the time frame it took.",
         "cases": [
             {"tag": "Permanent Lighting", "where": "Fresno, CA &amp; Bozeman, MT", "name": "bluEmber Lighting",
+             "card": {"logo": ("bluember.png", 520, 123), "trade": "Permanent lighting &middot; Fresno &amp; Bozeman", "big": "1,516", "big_label": "leads in 8 weeks", "stats": [("Cost per lead", "$35.06"), ("Ad spend", "$53,149")], "when": "Sep 15 &ndash; Nov 11, 2026"},
              "story": [("The Challenge", "A permanent lighting company that needed a steady stream of homeowner leads to keep its install calendar full."),
                        ("What We Ran", "Meta lead ad campaigns for permanent lighting installs, tracked in the client's own ad account.")],
              "stats": [("Leads, Sep 15 &ndash; Nov 11, 2026", "1,516", True), ("Time frame", "8<span>wks</span>", False),
@@ -204,7 +215,7 @@ TRADES = [
         ],
         "extra_proof": None,
         "sites_h2": "Lighting sites and pages we've built.",
-        "sites": [("My Clean Windows", "/#work"), ("Triumph Services", "/#work")],
+        "sites": ["mcw", "triumph"],
         "cpl_faq": ("What do Meta ad leads cost for a permanent lighting company?",
                     "It depends on your market, your offer and the season, so we won't quote a number before we've seen your business. For reference: bluEmber Lighting paid $35.06 per lead (1,516 leads on $53,149 of ad spend, Sep 15 &ndash; Nov 11, 2026)."),
         "services": [
@@ -234,7 +245,7 @@ def build(t):
                 "serviceType": f"Marketing for {t['plural']}",
                 "description": strip_tags(t["lede"]),
                 "url": url,
-                "provider": {"@type": "ProfessionalService", "@id": "https://fieldforcemedia.com/#organization", "name": "Field Force Media", "url": "https://fieldforcemedia.com"},
+                "provider": {"@type": "ProfessionalService", "@id": "https://fieldforcemedia.com/#organization", "name": "Field Force Media", "telephone": "+1-385-543-3158", "url": "https://fieldforcemedia.com"},
                 "areaServed": {"@type": "Country", "name": "United States"},
                 "audience": {"@type": "BusinessAudience", "audienceType": strip_tags(t["plural"]).capitalize()},
             },
@@ -258,28 +269,19 @@ def build(t):
     schema_json = json.dumps(schema, indent=2, ensure_ascii=False)
     schema_json = "\n".join("  " + line for line in schema_json.splitlines())
 
-    cases = "".join(case(c) for c in t["cases"])
-    extra = f'\n    <p class="section-sub reveal" style="margin-top:32px;">{t["extra_proof"]}</p>' if t["extra_proof"] else ""
-
-    def site_link(name, href):
-        ext = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
-        return f'<a class="chip cut" style="--cut:8px" href="{href}"{ext}>{name}</a>'
-    sites = "".join(site_link(n, h) for n, h in t["sites"])
-
-    delays = ["", " reveal-delay-1", " reveal-delay-2", "", " reveal-delay-1"]
-    cards = "\n".join(
-        f'      <a href="services.html" class="service-card reveal{delays[i]}">\n'
-        f'        <div class="service-num">0{i + 1}</div>\n'
-        f'        <div class="service-name">{name}</div>\n'
-        f'        <p class="service-desc">{desc}</p>\n'
-        f'      </a>'
-        for i, (name, desc) in enumerate(t["services"])
+    n = len(t["cases"])
+    cards = "\n".join(case_card(c) for c in t["cases"])
+    stories = "\n".join(case_story(c) for c in t["cases"])
+    extra = f'\n    <p class="do-trades plain">{t["extra_proof"]}</p>' if t["extra_proof"] else ""
+    dots = '\n    <div class="rdots" id="rdots" aria-label="Choose a client"></div>' if n > 1 else ""
+    rows = "\n".join(
+        f'      <li><a href="services.html"><b>{name}</b><span>{desc}</span></a></li>'
+        for name, desc in t["services"]
     )
-
+    shots = "".join(site_shot(k) for k in t["sites"])
     others = [o for o in TRADES if o["slug"] != t["slug"]]
-    other_links = "".join(
-        f'<a class="chip cut" style="--cut:8px" href="{o["slug"]}.html">{o["trade"]} marketing</a>' for o in others
-    )
+    other_links = ", ".join(f'<a href="{o["slug"]}.html">{o["trade"].lower()}</a>' for o in others)
+    h1 = t["h1"].replace('class="gold"', 'class="hl"').replace("<br>", " <br>")  # space so it reads right when the break is hidden on phones
 
     plain_title = strip_tags(t["title"])
     return f"""<!DOCTYPE html>
@@ -307,105 +309,81 @@ def build(t):
   </script>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/lp.css" />
+  <link rel="stylesheet" href="css/home-m.css" />
+  <link rel="stylesheet" href="css/site.css" />
   <link rel="stylesheet" href="/css/fx.css" />
 </head>
 <body>
 
-{NAV}<div class="page-hero">
-  <div class="container page-hero-content">
-    <div class="label">{t["trade"]} Marketing</div>
-    <h1>{t["h1"]}</h1>
-    <p>{t["lede"]}</p>
+{NAV}<header class="h2s s-dark phero">
+  <div class="w2">
+    <p class="crumbs plain"><a href="/">Home</a> / <a href="services.html">Services</a> / {t["trade"]} Marketing</p>
+    <h1>{h1}</h1>
+    <p class="phero-sub">{t["lede"]}</p>
+    <a href="contact.html" class="hb hb-gold">Book a free strategy call</a>
+    <p class="phero-fine">Free 30-minute call. Month-to-month, cancel with 15 days' notice.</p>
   </div>
-</div>
+</header>
 
 <main>
 
 <!-- PROOF -->
-<section class="results-cases">
-  <div class="container">
-    <div class="section-header">
-      <div class="label reveal">Results</div>
-      <h2 class="section-title reveal reveal-delay-1">{t["trade"]} results we've tracked.</h2>
-      <p class="section-sub reveal reveal-delay-2">{t["cases_sub"]}</p>
-    </div>
-{cases}{extra}
+<section class="h2s s-dark hsec" id="results" aria-labelledby="res-h" style="padding-top:1rem">
+  <div class="w2">
+    <h2 class="lp-h" id="res-h">{t["trade"]} results we've tracked.</h2>
+    <p class="lp-lede">{t["cases_sub"]}</p>
+    <div class="rtrack r{min(n, 3)}" id="rtrack" tabindex="0" aria-label="Client results">
+{cards}
+    </div>{dots}
+    <div class="stories faq2">
+{stories}
+    </div>{extra}
+    <div class="svc-cta cut book-band"><div><h3>Want results like these?</h3><p>Book a free 30-minute strategy call. We'll look at your business and your market and tell you what would move the needle.</p></div><a href="contact.html" class="hb">Book a free strategy call</a></div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="section" style="background:var(--bg-2);border-top:1px solid var(--white-08);border-bottom:1px solid var(--white-08);">
-  <div class="container">
-    <div class="section-header">
-      <div class="label reveal">What We Do</div>
-      <h2 class="section-title reveal reveal-delay-1">What we run for {t["plural"]}.</h2>
-      <p class="section-sub reveal reveal-delay-2">We only work with home service businesses. Every piece is built to work together: your website feeds your ads, and your brand makes every ad and mailer work harder.</p>
-    </div>
-    <div class="services-grid">
-{cards}
-      <a href="contact.html" class="service-card reveal reveal-delay-2" style="background:var(--gold-faint);border:1px solid var(--gold-border);">
-        <div style="margin-bottom:20px;"><div class="label" style="font-size:0.65rem;">Ready to Start?</div></div>
-        <p style="font-size:0.95rem;color:var(--white-70);line-height:1.75;margin-bottom:28px;">Book a free 30-minute strategy call. We'll look at your business and your market and tell you what would move the needle.</p>
-        <span style="display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">
-          Book a Free Strategy Call
-          {ARROW}
-        </span>
-      </a>
-    </div>
+<section class="h2s s-light hsec" aria-labelledby="svc-h">
+  <div class="w2">
+    <h2 class="lp-h" id="svc-h">What we run for {t["plural"]}.</h2>
+    <p class="lp-lede">Every piece works together: your website feeds your ads, and your brand makes every ad and mailer work harder.</p>
+    <ul class="do-list wide three">
+{rows}
+    </ul>
   </div>
 </section>
 
 <!-- SITES -->
-<section class="h2s s-dark pad2">
+<section class="h2s s-dark hsec" aria-labelledby="sites-h">
   <div class="w2">
-    <div class="h2-head">
-      <div>
-        <h2 class="h2-title">{t["sites_h2"]}</h2>
-        <p class="h2-sub">Built phone-first and wired so every quote request goes straight to the owner. See each one up close on the home page.</p>
-      </div>
-      <a class="h2-link" href="/#work">See the sites</a>
+    <h2 class="lp-h" id="sites-h">{t["sites_h2"]}</h2>
+    <p class="lp-lede">Built phone-first and wired so every quote request goes straight to the owner.</p>
+    <div class="sites">
+      <ul class="sites-row" tabindex="0" aria-label="{strip_tags(t["sites_h2"])}">{shots}</ul>
     </div>
-    <div class="chips">{sites}</div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="h2s s-light pad2">
+<section class="h2s s-light hsec" aria-labelledby="faq-h">
   <div class="w2">
-    <h2 class="h2-title faq2" style="margin-bottom:2.6rem;max-width:820px">{t["trade"]} marketing <span class="hl">questions.</span></h2>
-    <div class="faq2">
+    <h2 class="lp-h" id="faq-h">{t["trade"]} marketing <span class="hl">questions.</span></h2>
+    <div class="faq2 faq3">
 
 {faq_html(faqs)}
 
     </div>
+    <p class="do-trades plain">We also do marketing for {other_links} companies, and every other home service trade. <a href="services.html">See all our services</a>.</p>
   </div>
 </section>
 
-<!-- OTHER TRADES -->
-<section class="h2s s-dark pad2">
+<section class="h2s s-dark cta2 cta3">
   <div class="w2">
-    <div class="h2-head">
-      <div>
-        <h2 class="h2-title">Marketing for other home service trades.</h2>
-        <p class="h2-sub">We work with home service businesses of every kind. <a href="services.html">See all our services</a>.</p>
-      </div>
-    </div>
-    <div class="chips">{other_links}</div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-inner">
-      <div class="label reveal" style="justify-content:center;display:flex;margin-bottom:20px;">{t["trade"]}</div>
-      <h2 class="cta-headline reveal reveal-delay-1">Ready to Grow Your<br><span class="gold">{t["trade"]} Business?</span></h2>
-      <p class="cta-sub reveal reveal-delay-2">Book a free 30-minute strategy call. We'll look at your business, your market and your revenue goal, and give you a clear picture of what to do next.</p>
-      <div class="cta-actions reveal reveal-delay-3">
-        <a href="contact.html" class="btn btn-gold btn-lg">Book a Free Strategy Call</a>
-        <a href="results.html" class="btn btn-outline btn-lg">See Client Results</a>
-      </div>
-      <p class="cta-fine reveal reveal-delay-4">Month-to-month terms. Cancel with 15 days' notice.</p>
-    </div>
+    <h2 class="h2-title">Ready to grow your <span class="hl">{t["short"]} business?</span></h2>
+    <p>Book a free 30-minute strategy call. We'll look at your business, your market and your revenue goal, and give you a clear picture of what to do next.</p>
+    <a href="contact.html" class="hb hb-gold">Book a free strategy call</a>
+    <p class="fine">Month-to-month terms. Cancel with 15 days' notice.</p>
   </div>
 </section>
 
@@ -414,6 +392,7 @@ def build(t):
 {FOOTER}
 
 <script src="js/main.js"></script>
+<script src="js/rcards.js"></script>
 <script src="/js/fx.js" defer></script>
 <!-- GoHighLevel chat + phone widget -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6afcc076f31f8c02e6114837"></script>
