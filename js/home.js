@@ -17,8 +17,10 @@
         base = d.spend; asof = Date.parse(d.fetchedAt); rate = (d.dailyRate || 0) / 86400;
         var set = function (k, val, dec, suf, text) {
           document.querySelectorAll('[data-stat="' + k + '"]').forEach(function (el) {
-            if (el.hasAttribute('data-count') && !el.dataset.done) { el.dataset.count = String(val); }
-            else { el.textContent = text; }
+            /* Always store the live figure; a count-up in progress reads it every frame, so it lands on
+               the live number instead of the HTML fallback. Only write text once a count-up has finished. */
+            if (el.hasAttribute('data-count')) el.dataset.count = String(val);
+            if (!el.hasAttribute('data-count') || el.dataset.done === 'end') el.textContent = text;
           });
         };
         set('leads', d.leads, 0, '+', fmt(d.leads, 0) + '+');
@@ -41,14 +43,15 @@
   var nums = document.querySelectorAll('[data-count]');
   var run = function (el) {
     el.dataset.done = '1';
-    var end = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec || '0', 10), suf = el.dataset.suf || '';
-    if (reduce) { el.textContent = fmt(end, dec) + suf; return; }
+    var dec = parseInt(el.dataset.dec || '0', 10), suf = el.dataset.suf || '';
+    var end = function () { return parseFloat(el.dataset.count); }; /* live figure may arrive mid-animation */
+    if (reduce) { el.textContent = fmt(end(), dec) + suf; el.dataset.done = 'end'; return; }
     var t0 = null, dur = 1400;
     var step = function (ts) {
       if (!t0) t0 = ts;
       var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(end * e, dec) + suf;
-      if (p < 1) requestAnimationFrame(step);
+      el.textContent = fmt(end() * e, dec) + suf;
+      if (p < 1) requestAnimationFrame(step); else el.dataset.done = 'end';
     };
     requestAnimationFrame(step);
   };
