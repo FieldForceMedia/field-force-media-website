@@ -1,0 +1,92 @@
+/* ============================================================
+   Homepage, short + phone-first (2026-11-25).
+   Builds on home.css (tokens, tracker, marquee) and lp.css (result cards).
+   Order: promise + button -> live numbers -> logos -> results + quote
+          -> what we do -> how it works -> questions -> book.
+   ============================================================ */
+
+/* Nav: keep a "Book a call" button visible on phones too. */
+@media (max-width: 768px) {
+  .nav .nav-cta { display: inline-flex; flex-shrink: 0; white-space: nowrap; margin-left: auto; margin-right: 6px; min-height: 44px; padding: 0.6rem 0.8rem; font-size: 0.72rem; letter-spacing: 0.04em; }
+  .nav .nav-toggle { margin-left: 0; flex-shrink: 0; }
+  .nav .nav-inner { gap: 8px; }
+}
+
+@media (max-width: 359px) { .nav .nav-logo-text { display: none; } }
+
+/* Hero */
+.hero3 { padding: 7.5rem 0 7rem; }
+.hero3 .hero2-sub { margin: 1.3rem 0 1.8rem; font-size: 1.12rem; }
+.hero3-fine { color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0.9rem 0 0; }
+@media (max-width: 959px) {
+  .hero3 { padding: 6.2rem 0 5.4rem; }
+  .hero3 .hero2-mark { display: none; }
+  .hero3 h1 { font-size: clamp(2.4rem, 10.4vw, 3.4rem); }
+  .hero3-btn { width: 100%; }
+}
+
+/* Logos sit tight under the live numbers */
+.clients.lp-logos { padding: 2.4rem 0 0.5rem; }
+.clients.lp-logos h2 { font-size: 0.9rem; margin-bottom: 0.9rem; }
+
+/* Section rhythm */
+.hsec { padding: 4rem 0; }
+@media (min-width: 900px) { .hsec { padding: 6rem 0; } }
+.hsec .lp-h { max-width: 18ch; }
+.s-light .lp-lede { color: var(--muted); }
+#results .h2-link { display: inline-block; margin-top: 1.8rem; }
+@media (min-width: 900px) { #results .rfoot { text-align: left; } }
+
+/* One quote under the cards */
+.hquote { margin: 2.4rem 0 0; padding: 0 0 0 1.2rem; border-left: 4px solid var(--a); max-width: 60ch; }
+.hquote p { margin: 0; font-size: clamp(1.05rem, 4.2vw, 1.3rem); line-height: 1.55; font-weight: 500; }
+.hquote footer { margin-top: 0.8rem; color: var(--muted); font-size: 0.9rem; }
+.hquote cite { font-style: normal; font-weight: 800; font-family: 'Montserrat', sans-serif; color: var(--fg); }
+
+/* What we do: four short rows */
+.do-list { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; }
+.do-list a { display: grid; gap: 0.3rem; padding: 1.1rem 0; border-bottom: 3px solid var(--tone-2); text-decoration: none; color: var(--fg); min-height: 44px; }
+.do-list li:first-child a { border-top: 3px solid var(--tone-2); }
+.do-list b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; letter-spacing: -0.03em; }
+.do-list span { color: var(--muted); line-height: 1.5; }
+.do-list a:hover b { color: var(--a); }
+@media (min-width: 900px) {
+  .do-list { grid-template-columns: repeat(4, 1fr); gap: 0 2rem; margin-top: 2.4rem; }
+  .do-list a, .do-list li:first-child a { border-top: 3px solid var(--tone-2); border-bottom: 0; padding-top: 1.4rem; }
+}
+.do-trades { margin: 1.4rem 0 0; color: var(--muted); line-height: 1.7; max-width: 60ch; }
+.do-trades a { color: var(--fg); font-weight: 700; text-decoration: underline; text-decoration-color: var(--a); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+
+/* Sites we've built: a swipe row of screenshots */
+.sites { margin-top: 2.6rem; }
+.sites h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; margin: 0 0 0.9rem; }
+.sites-row { list-style: none; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -20px; padding: 0 20px 4px; scroll-padding: 0 20px; }
+.sites-row::-webkit-scrollbar { display: none; }
+.sites-row li { flex: 0 0 62%; scroll-snap-align: start; }
+.sites-row a, .sites-row li > div { display: block; background: var(--tone); color: var(--fg); text-decoration: none; }
+.sites-row img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.sites-row span { display: block; padding: 0.7rem 0.8rem; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.85rem; letter-spacing: -0.01em; }
+.sites-row a:hover span { color: var(--a); }
+@media (min-width: 900px) { .sites-row { display: grid; grid-template-columns: repeat(6, 1fr); overflow: visible; margin: 0; padding: 0; } }
+
+/* How it works: three numbered steps (it is a sequence) */
+.how { list-style: none; counter-reset: step; margin: 1.8rem 0 2rem; padding: 0; display: grid; gap: 1.4rem; }
+.how li { counter-increment: step; display: grid; grid-template-columns: 3.2rem 1fr; gap: 0.2rem 0.6rem; align-items: baseline; }
+.how li::before { content: counter(step); grid-row: span 2; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.6rem; line-height: 1; letter-spacing: -0.05em; color: var(--a); }
+.how b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.25rem; letter-spacing: -0.02em; }
+.how span { color: var(--muted); line-height: 1.55; }
+.how-btn { width: 100%; }
+@media (min-width: 900px) { .how { grid-template-columns: repeat(3, 1fr); gap: 2.4rem; margin: 2.6rem 0 2.6rem; } .how-btn { width: auto; } }
+
+/* Questions: all closed, tight */
+.faq3 { margin: 1.4rem 0 0; max-width: 860px; }
+.faq3 .faq-q { min-height: 44px; }
+
+/* Final call to action */
+.cta3 { padding: 5rem 0; }
+.cta3 p { margin: 1rem auto 1.8rem; }
+@media (max-width: 759px) { .cta3 .hb { width: 100%; } }
+
+/* Bigger tap targets */
+#results .rdots button { width: 44px; height: 44px; }
+#results .h2-link { padding: 12px 0 8px; }

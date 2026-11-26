@@ -195,6 +195,8 @@
   </script>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/lp.css" />
+  <link rel="stylesheet" href="css/home-m.css" />
   <link rel="stylesheet" href="/css/fx.css" />
 </head>
 <body>
@@ -215,7 +217,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="contact.html" class="btn btn-gold nav-cta">Get Started →</a>
+    <a href="contact.html" class="btn btn-gold nav-cta">Book a call</a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -242,17 +244,15 @@
   </div>
 </div>
 
-<!-- HERO -->
-<header class="h2s s-dark hero2">
+<!-- HERO: one promise, one button -->
+<header class="h2s s-dark hero2 hero3">
   <div class="w2">
     <div class="hero2-grid">
       <div>
         <h1>Home service marketing that <span class="hl">grows revenue.</span></h1>
-        <p class="hero2-sub">We build marketing systems for home service businesses: Meta ads, custom websites, branding, and direct mail, all engineered to compound. Built by people who know the trades from the inside out.</p>
-        <div class="hb-row">
-          <a href="contact.html" class="hb hb-gold" data-magnetic>Book a free strategy call</a>
-          <a href="results.html" class="hb hb-line">See the results</a>
-        </div>
+        <p class="hero2-sub">Meta ads, websites and branding for home service businesses. Built by people who know the trades.</p>
+        <a href="contact.html" class="hb hb-gold hero3-btn" data-magnetic>Book a free strategy call</a>
+        <p class="hero3-fine">Free 30-minute call. Month-to-month, cancel with 15 days' notice.</p>
       </div>
       <div class="hero2-mark hm" data-parallax role="img" aria-label="Field Force Media mark"><svg viewBox="293 239 701 845" aria-hidden="true"><polygon class="p1" fill="currentColor" points="293,239 961,239 838,354 414,354 414,445 684,445 562,559 414,559 414,983 293,875"/><polygon class="p2" points="765,451 993,451 881,559 657,559"/><polygon class="p3" fill="currentColor" points="487,628 876,628 764,736 596,736 596,986 487,1084"/></svg></div>
     </div>
@@ -277,8 +277,8 @@
   </div>
 </section>
 
-<!-- CLIENT BANNER -->
-<section class="h2s s-dark clients" aria-label="Companies we have worked with">
+<!-- CLIENT LOGOS -->
+<section class="h2s s-dark clients lp-logos" aria-label="Companies we have worked with">
   <div class="w2"><h2>Companies we've worked with</h2></div>
   <div class="marquee-scroller" tabindex="0" aria-label="Client logos, scrolls on its own; drag or swipe to move faster">
   <div class="marquee" role="presentation">
@@ -288,137 +288,99 @@
   </div>
 </section>
 
-<!-- WORK -->
-<section class="h2s s-light pad2" id="work">
+<!-- RESULTS: one card per client, swipe on phones -->
+<section class="h2s s-dark hsec" id="results" aria-labelledby="res-h">
   <div class="w2">
-    <div class="h2-head">
-      <div>
-        <h2 class="h2-title rv">Sites we've built.</h2>
-        <p class="h2-sub rv">Websites and landing pages for the trades, built phone-first and wired so every quote request goes straight to the owner. Pick one to take a closer look.</p>
-      </div>
+    <h2 class="lp-h" id="res-h">Real numbers from <span class="hl">real ad accounts.</span></h2>
+    <p class="lp-lede">Straight from each client's Meta ad account or their books.</p>
+    <div class="rtrack" id="rtrack" tabindex="0" aria-label="Client results, swipe for more">
+        <article class="rcard cut" aria-label="Island Scape North Shore">
+          <div class="rcard-logo"><img src="images/clients/island-dark.png" alt="" width="305" height="300" loading="lazy" decoding="async"></div>
+          <h3 class="rcard-name">Island Scape North Shore</h3>
+          <p class="rcard-trade">Lawn care &middot; O&#8217;ahu, HI</p>
+          <p class="rcard-big"><b>17.5&times;</b><span>revenue growth</span></p>
+          <dl class="rcard-stats"><div><dt>Monthly revenue</dt><dd>$2K &rarr; $35K</dd></div><div><dt>Cost per lead</dt><dd>$27.79</dd></div></dl>
+          <p class="rcard-when">Over 14 months</p>
+        </article>
+        <article class="rcard cut" aria-label="bluEmber Lighting">
+          <div class="rcard-logo"><img src="images/clients/bluember.png" alt="" width="520" height="123" loading="lazy" decoding="async"></div>
+          <h3 class="rcard-name">bluEmber Lighting</h3>
+          <p class="rcard-trade">Permanent lighting &middot; Fresno &amp; Bozeman</p>
+          <p class="rcard-big"><b>1,516</b><span>leads in 8 weeks</span></p>
+          <dl class="rcard-stats"><div><dt>Cost per lead</dt><dd>$35.06</dd></div><div><dt>Ad spend</dt><dd>$53,149</dd></div></dl>
+          <p class="rcard-when">Sep 15 &ndash; Nov 11, 2026</p>
+        </article>
+        <article class="rcard cut" aria-label="Valley Pest Control">
+          <div class="rcard-logo"><img src="images/clients/valley.png" alt="" width="520" height="148" loading="lazy" decoding="async"></div>
+          <h3 class="rcard-name">Valley Pest Control</h3>
+          <p class="rcard-trade">Pest control &middot; Clovis / Fresno, CA</p>
+          <p class="rcard-big"><b>$19K+</b><span>in contracts signed in 9 weeks</span></p>
+          <dl class="rcard-stats"><div><dt>Leads</dt><dd>148</dd></div><div><dt>Cost per lead</dt><dd>$34.52</dd></div></dl>
+          <p class="rcard-when">Jul 8 &ndash; Oct 19, 2026</p>
+        </article>
+        <article class="rcard cut" aria-label="Source Pest Control">
+          <div class="rcard-logo"><img src="images/clients/source.png" alt="" width="500" height="135" loading="lazy" decoding="async"></div>
+          <h3 class="rcard-name">Source Pest Control</h3>
+          <p class="rcard-trade">Pest control &middot; Temecula, CA</p>
+          <p class="rcard-big"><b>91</b><span>leads in 5 weeks</span></p>
+          <dl class="rcard-stats"><div><dt>Cost per lead</dt><dd>$35.22</dd></div><div><dt>Ad spend</dt><dd>$3,205</dd></div></dl>
+          <p class="rcard-when">Oct 8 &ndash; Nov 11, 2026</p>
+        </article>
     </div>
-    <div class="showcase rv" id="showcase">
-      <div class="stage">
-        <figure class="stage-shot">
-          <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url" id="stUrl">slatewindowwashing.com</span></div>
-          <picture><source id="stSrc" media="(max-width: 759px)" srcset="images/work/slate-m.jpg"><img id="stImg" src="images/work/slate-d.jpg" alt="Slate Window Washing website" width="1440" height="900"></picture>
-        </figure>
-        <div class="stage-info">
-          <h3 id="stName">Slate Window Washing</h3>
-          <p class="where" id="stWhere">Summerlin, NV &middot; Website</p>
-          <p id="stDesc">A premium site for a one-owner window crew, with a squeegee you can wipe the hero glass with.</p>
-          <a class="h2-link" id="stLink" href="https://slatewindowwashing.com" target="_blank" rel="noopener">Visit the live site</a>
-        </div>
-      </div>
-      <div class="thumbs" role="group" aria-label="More sites we've built">
-        <button type="button" data-cursor="View" class="thumb on" data-k="slate" data-name="Slate Window Washing" data-where="Summerlin, NV &middot; Website" data-desc="A premium site for a one-owner window crew, with a squeegee you can wipe the hero glass with." data-dom="slatewindowwashing.com" data-url="https://slatewindowwashing.com" aria-pressed="true"><span class="t-shot"><img src="images/work/slate-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">Slate Window Washing</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="rrp" data-name="Red Rock Palms" data-where="St. George, UT &middot; Website" data-desc="Palm care specialists with a full site and service-area pages across southern Utah." data-dom="" data-url="" aria-pressed="false"><span class="t-shot"><img src="images/work/rrp-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">Red Rock Palms</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="island" data-name="Island Scape North Shore" data-where="North Shore, O'ahu &middot; Website" data-desc="Our own flagship: the site, branding and ads behind 17.5x revenue growth in 14 months." data-dom="islandscapeoahu.com" data-url="https://islandscapeoahu.com" aria-pressed="false"><span class="t-shot"><img src="images/work/island-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">Island Scape North Shore</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="valley" data-name="Valley Pest Control" data-where="Clovis / Fresno, CA &middot; Landing page" data-desc="The landing page behind the Meta ads that signed $19K+ in contracts in 9 weeks." data-dom="" data-url="" aria-pressed="false"><span class="t-shot"><img src="images/work/valley-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">Valley Pest Control</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="source" data-name="Source Pest Control" data-where="Temecula, CA &middot; Website" data-desc="A fast, call-first site that sends every quote request straight to the owner." data-dom="" data-url="" aria-pressed="false"><span class="t-shot"><img src="images/work/source-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">Source Pest Control</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="triumph" data-name="Triumph Services" data-where="Metro Detroit, MI &middot; Website" data-desc="A twelve-page site for exterior cleaning and holiday lighting across Metro Detroit." data-dom="" data-url="" aria-pressed="false"><span class="t-shot"><img src="images/work/triumph-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">Triumph Services</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="mcw" data-name="My Clean Windows" data-where="Utah &middot; Landing page" data-desc="A permanent lighting landing page built to turn Meta lead ads into booked consultations." data-dom="" data-url="" aria-pressed="false"><span class="t-shot"><img src="images/work/mcw-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">My Clean Windows</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="pacific" data-name="Pacific Breeze Window Cleaning" data-where="O'ahu, HI &middot; Website" data-desc="A phone-first site for the #1 rated window cleaning crew on O'ahu, with an interactive island service map and a tracked quote form." data-dom="pacificbreezewindowcleaning.com" data-url="https://pacificbreezewindowcleaning.com" aria-pressed="false"><span class="t-shot"><img src="images/work/pacific-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">Pacific Breeze Window Cleaning</span></button>
-        <button type="button" data-cursor="View" class="thumb" data-k="hydro" data-name="HydroSpark" data-where="Colorado &middot; Landing page" data-desc="A booking-focused landing page for a Colorado window cleaning company, built to turn Meta leads into appointments." data-dom="" data-url="" aria-pressed="false"><span class="t-shot"><img src="images/work/hydro-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"></span><span class="t-name">HydroSpark</span></button>
-        
-      </div>
-    </div>
+    <div class="rdots" id="rdots" aria-label="Choose a client"></div>
+    <blockquote class="hquote">
+      <p>"We went from barely covering expenses to $35,000 a month in recurring revenue. The website, the ads, the branding. It all worked together as a system. For the first time I felt like I had a real business, not just a job."</p>
+      <footer><cite>Josh Johnson</cite>, Island Scape North Shore LLC, O'ahu</footer>
+    </blockquote>
+    <a class="h2-link" href="results.html">See every result</a>
   </div>
 </section>
 
-<!-- RESULTS -->
-<section class="h2s s-dark pad2" id="results">
+<!-- WHAT WE DO -->
+<section class="h2s s-light hsec" aria-labelledby="do-h">
   <div class="w2">
-    <div class="res-lead">
-      <h2 class="h2-title rv">Real numbers from <span class="hl">real ad accounts.</span></h2>
-      <p class="h2-sub rv" style="margin:0">Every figure here comes from the client's own Meta ad account or their books, with the time frame it took.</p>
-    </div>
-    <table class="res-table rv">
-      <thead><tr><th>Client</th><th>Leads</th><th>Ad spend</th><th>Time frame</th><th>Cost per lead</th></tr></thead>
-      <tbody>
-        <tr><td><div class="res-name">Island Scape North Shore<small>Lawn care &middot; O'ahu</small><em>17.5&times; revenue growth in 14 months</em></div></td><td data-l="Leads"><span class="res-big">42</span></td><td data-l="Ad spend"><span class="res-num">$1,167</span></td><td data-l="Time frame"><span class="res-num">2 months<small>Nov &ndash; Dec 2025</small></span></td><td data-l="Cost per lead"><span class="res-num">$27.79</span></td></tr>
-        <tr><td><div class="res-name">Valley Pest Control<small>Pest control &middot; Clovis / Fresno</small><em>$19K+ in contracts signed in 9 weeks</em></div></td><td data-l="Leads"><span class="res-big">148</span></td><td data-l="Ad spend"><span class="res-num">$5,108</span></td><td data-l="Time frame"><span class="res-num">3&frac12; months<small>Jul 8 &ndash; Oct 19, 2026</small></span></td><td data-l="Cost per lead"><span class="res-num">$34.52</span></td></tr>
-        <tr><td><div class="res-name">bluEmber Lighting<small>Permanent lighting &middot; Fresno / Bozeman</small></div></td><td data-l="Leads"><span class="res-big">1,516</span></td><td data-l="Ad spend"><span class="res-num">$53,149</span></td><td data-l="Time frame"><span class="res-num">8 weeks<small>Sep 15 &ndash; Nov 11, 2026</small></span></td><td data-l="Cost per lead"><span class="res-num">$35.06</span></td></tr>
-        <tr><td><div class="res-name">Source Pest Control<small>Pest control &middot; Temecula, CA</small></div></td><td data-l="Leads"><span class="res-big">91</span></td><td data-l="Ad spend"><span class="res-num">$3,205</span></td><td data-l="Time frame"><span class="res-num">5 weeks<small>Oct 8 &ndash; Nov 11, 2026</small></span></td><td data-l="Cost per lead"><span class="res-num">$35.22</span></td></tr>
-        </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="h2s s-light pad2">
-  <div class="w2">
-    <div class="h2-head">
-      <div>
-        <h2 class="h2-title rv">Everything a home service business needs <span class="hl">to grow.</span></h2>
-        <p class="h2-sub rv">We don't hand you a playbook and disappear. We build the systems, run the campaigns, and own the results alongside you.</p>
-      </div>
-    </div>
-    <ul class="svc-list">
-      <li class="rv"><a href="services.html" class="svc-row"><h3>Paid advertising</h3><p>Meta ads (Facebook and Instagram) and Google campaigns engineered to put your business in front of homeowners ready to book, in your market, targeting your customer.</p></a></li>
-      <li class="rv"><a href="services.html" class="svc-row"><h3>Website design</h3><p>Custom-built sites and landing pages that rank in local search and turn visitors into booked jobs, built for your brand and your market.</p></a></li>
-      <li class="rv"><a href="services.html" class="svc-row"><h3>Brand identity</h3><p>Logo, color system and typography that tell homeowners you're the established, professional choice before you say a word.</p></a></li>
-      <li class="rv"><a href="services.html" class="svc-row"><h3>Direct mail</h3><p>Door hangers, EDDM campaigns and yard signs that put your business in front of homeowners where they live.</p></a></li>
-      <li class="rv"><a href="services.html" class="svc-row"><h3>Marketing strategy</h3><p>A growth roadmap built around your revenue goal: which channels to prioritize, what to spend, what to build, and in what order.</p></a></li>
+    <h2 class="lp-h" id="do-h">What we do.</h2>
+    <ul class="do-list">
+      <li><a href="services.html"><b>Paid ads</b><span>Meta and Google ads that reach homeowners in your area who are ready to book.</span></a></li>
+      <li><a href="services.html"><b>Websites</b><span>Phone-first sites that rank locally and send every quote request straight to you.</span></a></li>
+      <li><a href="services.html"><b>Branding</b><span>Logo, colors and type that make you look like the established choice.</span></a></li>
+      <li><a href="services.html"><b>Direct mail</b><span>Door hangers, EDDM and yard signs where your customers live.</span></a></li>
     </ul>
-    <div class="svc-cta cut rv"><div><h3>Not sure what fits?</h3><p>A free 30-minute call gives us both clarity on what would actually move the needle for your business.</p></div><a href="contact.html" class="hb">Book a strategy call</a></div>
-  </div>
-</section>
-
-<!-- WHO WE SERVE -->
-<section class="h2s s-dark pad2">
-  <div class="w2">
-    <div class="h2-head">
-      <h2 class="h2-title rv">Built for the home service <span class="hl">industry.</span></h2>
-      <p class="h2-sub rv" style="max-width:40ch">If you work in the field, we understand your business: the seasonality, the margins, the local competition, and what it takes to win.</p>
-    </div>
-    <div class="chips rv">
-      <a class="chip cut" style="--cut:8px" href="lawn-care-marketing.html">Lawn care &amp; landscaping</a><a class="chip cut" style="--cut:8px" href="window-cleaning-marketing.html">Window cleaning</a><a class="chip cut" style="--cut:8px" href="contact.html">Pressure washing</a><a class="chip cut" style="--cut:8px" href="contact.html">Painting</a><a class="chip cut" style="--cut:8px" href="contact.html">House cleaning</a><a class="chip cut" style="--cut:8px" href="contact.html">HVAC</a><a class="chip cut" style="--cut:8px" href="pest-control-marketing.html">Pest control</a><a class="chip cut" style="--cut:8px" href="contact.html">Tree service</a><a class="chip cut" style="--cut:8px" href="contact.html">Roofing</a><a class="chip cut" style="--cut:8px" href="contact.html">Pool service</a><a class="chip cut" style="--cut:8px" href="contact.html">Irrigation</a><a class="chip cut" style="--cut:8px" href="contact.html">Gutter cleaning</a><a class="chip cut" style="--cut:8px" href="contact.html">Concrete &amp; paving</a><a class="chip cut" style="--cut:8px" href="contact.html">Fencing</a><a class="chip cut" style="--cut:8px" href="contact.html">Exterior cleaning</a><a class="chip cut" style="--cut:8px" href="permanent-lighting-marketing.html">Permanent lighting</a><a class="chip you cut" style="--cut:8px" href="contact.html">Your trade</a>
+    <p class="do-trades">For <a href="lawn-care-marketing.html">lawn care</a>, <a href="window-cleaning-marketing.html">window cleaning</a>, <a href="pest-control-marketing.html">pest control</a>, <a href="permanent-lighting-marketing.html">permanent lighting</a> and every other home service trade.</p>
+    <div class="sites" aria-label="Sites we've built">
+      <h3>Sites we've built</h3>
+      <ul class="sites-row" tabindex="0" aria-label="Sites we've built, swipe for more">
+        <li><a href="https://slatewindowwashing.com" target="_blank" rel="noopener"><img src="images/work/slate-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"><span>Slate Window Washing</span></a></li>
+        <li><a href="https://islandscapeoahu.com" target="_blank" rel="noopener"><img src="images/work/island-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"><span>Island Scape North Shore</span></a></li>
+        <li><a href="https://pacificbreezewindowcleaning.com" target="_blank" rel="noopener"><img src="images/work/pacific-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"><span>Pacific Breeze Window Cleaning</span></a></li>
+        <li><div><img src="images/work/rrp-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"><span>Red Rock Palms</span></div></li>
+        <li><div><img src="images/work/triumph-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"><span>Triumph Services</span></div></li>
+        <li><div><img src="images/work/source-t.jpg" alt="" loading="lazy" decoding="async" width="400" height="250"><span>Source Pest Control</span></div></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="h2s s-light pad2">
+<!-- HOW IT WORKS -->
+<section class="h2s s-dark hsec" aria-labelledby="how-h">
   <div class="w2">
-    <div class="h2-head">
-      <h2 class="h2-title rv">From first call to <span class="hl">booked jobs.</span></h2>
-      <p class="h2-sub rv" style="max-width:40ch">No long ramp-up and no guesswork, just a clear path from where you are to where you want to be.</p>
-    </div>
-    <div class="proc">
-      <div class="proc-step rv"><div class="proc-n">1</div><h3>Strategy call</h3><p>30 minutes. We learn your business, your market, and where the growth opportunity is. You'll leave with a clear picture of what to prioritize, with or without us.</p></div>
-      <div class="proc-step rv" style="--d:80ms"><div class="proc-n">2</div><h3>Build the system</h3><p>We build everything: website, ad creative, brand assets, campaigns. Connected into one system where every piece amplifies the others.</p></div>
-      <div class="proc-step rv" style="--d:160ms"><div class="proc-n">3</div><h3>Scale and optimize</h3><p>We run, track and optimize everything. Push harder on what's working, cut what isn't. You deliver great work. We keep your phone ringing.</p></div>
-    </div>
+    <h2 class="lp-h" id="how-h">How it works.</h2>
+    <ol class="how">
+      <li><b>Strategy call</b><span>30 minutes, free. We find where your growth is, with or without us.</span></li>
+      <li><b>We build it</b><span>Website, ads and brand, connected into one system.</span></li>
+      <li><b>We run it</b><span>We track and optimize everything. You do the work, we keep your phone ringing.</span></li>
+    </ol>
+    <a href="contact.html" class="hb hb-gold how-btn">Book a free strategy call</a>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="h2s s-dark pad2">
+<!-- FAQ (all closed) -->
+<section class="h2s s-light hsec" aria-labelledby="faq-h">
   <div class="w2">
-    <h2 class="h2-title rv" style="margin-bottom:2.8rem">Heard from <span class="hl">the field.</span></h2>
-    <div class="quote-grid">
-      <div class="quote cut rv">
-        <div class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>"We went from barely covering expenses to $35,000 a month in recurring revenue. The website, the ads, the branding. It all worked together as a system. For the first time I felt like I had a real business, not just a job."</p>
-        <cite>Josh Johnson</cite><small>Island Scape North Shore LLC &middot; Lawn care &amp; landscaping &middot; O'ahu, HI</small>
-      </div>
-      <div class="next-card cut rv" style="--d:90ms">
-        <h3>Your business is next.</h3>
-        <p>We're taking on a limited number of new clients. If you're serious about growing, let's have a real conversation about what it would take.</p>
-        <a href="contact.html" class="hb">Book a free strategy call</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <h2 class="lp-h" id="faq-h">Questions.</h2>
+    <div class="faq2 faq3">
 
-<!-- FAQ -->
-<section class="h2s s-light pad2">
-  <div class="w2">
-    <h2 class="h2-title faq2" style="margin-bottom:2.6rem;max-width:820px">Everything you need to <span class="hl">know.</span></h2>
-    <div class="faq2">
-
-      <details class="faq-item" open>
+      <details class="faq-item">
         <summary class="faq-q">What makes Field Force Media different from other marketing agencies?</summary>
         <div class="faq-a">We only work with home service businesses. That's not a niche — it's a total focus. We understand your seasonality, your customer, your margins, and what it actually takes to dominate a local market. No learning curve. No generic playbooks borrowed from e-commerce. Every strategy we build is purpose-built for home service.</div>
       </details>
@@ -448,15 +410,11 @@
 </section>
 
 <!-- CTA -->
-<section class="h2s s-dark cta2">
-  <div class="wm" aria-hidden="true"><svg viewBox="293 239 701 845" aria-hidden="true"><polygon fill="currentColor" points="293,239 961,239 838,354 414,354 414,445 684,445 562,559 414,559 414,983 293,875"/><polygon fill="currentColor" points="765,451 993,451 881,559 657,559"/><polygon fill="currentColor" points="487,628 876,628 764,736 596,736 596,986 487,1084"/></svg></div>
+<section class="h2s s-dark cta2 cta3">
   <div class="w2">
-    <h2 class="h2-title">Stop leaving <span class="hl">money on the table.</span></h2>
-    <p>Your competitors are booking jobs from homeowners who just looked you both up. Make sure that's you, every time.</p>
-    <div class="hb-row">
-      <a href="contact.html" class="hb hb-gold">Book a free strategy call</a>
-      <a href="services.html" class="hb hb-line">See our services</a>
-    </div>
+    <h2 class="h2-title">Your business is <span class="hl">next.</span></h2>
+    <p>Tell us about your business and we'll reach out within 24 hours to set up your free 30-minute call.</p>
+    <a href="contact.html" class="hb hb-gold">Book a free strategy call</a>
     <p class="fine">Month-to-month terms. Cancel with 15 days' notice, no pressure.</p>
   </div>
 </section>
@@ -513,6 +471,7 @@
 
 <script src="js/main.js"></script>
 <script src="js/home.js"></script>
+<script src="js/rcards.js"></script>
 
 <script src="/js/fx.js" defer></script>
 <!-- GoHighLevel chat + phone widget -->

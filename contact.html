@@ -50,6 +50,7 @@
   </script>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="/css/fx.css" />
+  <link rel="stylesheet" href="css/book.css" />
 </head>
 <body>
 
@@ -96,85 +97,14 @@
   </div>
 </div>
 
-<div class="page-hero">
-  <div class="container page-hero-content">
-    <div class="label">Get Started</div>
-    <h1>Let's Talk About<br><span class="gold">Growing Your Business.</span></h1>
-    <p>Fill out the form and we'll reach out within 24 hours to schedule a free 30-minute strategy call. No pitch. A real conversation.</p>
-  </div>
-</div>
+<main class="book2">
+  <div class="container book2-grid">
+    <div class="book2-intro">
+      <h1>Book your free <span class="gold">strategy call.</span></h1>
+      <p>30 minutes, free. Fill this in and we'll reach out within 24 hours to set a time.</p>
+    </div>
 
-<main>
-
-<section class="contact-section">
-  <div class="container">
-    <div class="contact-grid">
-
-      <div class="contact-info reveal">
-        <h2>Free Strategy Call.</h2>
-        <p>30 minutes. We'll look at your business, your market, and your revenue goal. You'll leave with real clarity on what to do next, whether we work together or not.</p>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.42 9a19.79 19.79 0 01-3.07-8.67A2 2 0 012.32 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div class="contact-item-text">
-            <div class="label">Call or Text</div>
-            <a href="tel:+13855433158">(385) 543-3158</a>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <div class="contact-item-text">
-            <div class="label">Response Time</div>
-            <span>Within 24 hours</span>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="contact-item-text">
-            <div class="label">Call Duration</div>
-            <span>30 minutes, free</span>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <div class="contact-item-text">
-            <div class="label">Who We Serve</div>
-            <span>Home service businesses</span>
-          </div>
-        </div>
-
-        <div class="what-to-expect-box" style="margin-top:40px;padding:24px 20px;background:var(--bg-3);border:1px solid var(--gold-border);">
-          <div class="label" style="margin-bottom:16px;">What to Expect</div>
-          <ul style="display:flex;flex-direction:column;gap:12px;">
-            <li style="display:flex;align-items:flex-start;gap:12px;font-size:0.85rem;color:var(--white-70);">
-              <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">→</span>
-              We review your current marketing and online presence before the call
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:12px;font-size:0.85rem;color:var(--white-70);">
-              <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">→</span>
-              We identify the highest-impact opportunities specific to your business
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:12px;font-size:0.85rem;color:var(--white-70);">
-              <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">→</span>
-              You leave with a clear picture of what to do next, with or without us
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="contact-form reveal reveal-delay-2">
-        <div class="label" style="margin-bottom:28px;">Tell Us About Your Business</div>
+    <div class="contact-form book2-form" id="form">
         <div id="form-sent" role="status" hidden style="margin-bottom:28px;padding:16px 20px;border:1px solid var(--gold);color:var(--white-70);font-size:0.85rem;">
           Thanks. We got your details and will reach out within 24 hours.
         </div>
@@ -239,7 +169,7 @@
             <label for="message">What's your biggest marketing challenge right now?</label>
             <textarea id="message" name="message" placeholder="Tell us where you're stuck or what you want to improve..."></textarea>
           </div>
-          <button type="submit" class="btn btn-gold btn-lg" style="width:100%;justify-content:center;">Submit. We'll Reach Out Within 24 Hours.</button>
+          <button type="submit" class="btn btn-gold btn-lg" style="width:100%;justify-content:center;">Request my free call</button>
           <p style="text-align:center;font-size:0.75rem;color:var(--white-20);margin-top:16px;letter-spacing:0.04em;">No obligation. No pressure. Just a conversation.</p>
         </form>
         <script>
@@ -252,12 +182,35 @@
             });
           }
         </script>
-      </div>
-
     </div>
-  </div>
-</section>
 
+    <aside class="book2-info" aria-label="About the call">
+      <h2>What you get on the call</h2>
+      <ul class="book2-list">
+        <li>We review your current marketing and online presence before the call</li>
+        <li>We identify the highest-impact opportunities specific to your business</li>
+        <li>You leave with a clear picture of what to do next, with or without us</li>
+      </ul>
+      <div class="book2-facts">
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.42 9a19.79 19.79 0 01-3.07-8.67A2 2 0 012.32 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="contact-item-text"><div class="label">Call or Text</div><a href="tel:+13855433158">(385) 543-3158</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="contact-item-text"><div class="label">Response Time</div><span>Within 24 hours</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="contact-item-text"><div class="label">Call Duration</div><span>30 minutes, free</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="contact-item-text"><div class="label">Who We Serve</div><span>Home service businesses</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
 </main>
 
 <footer class="footer">
