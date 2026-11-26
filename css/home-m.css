@@ -55,7 +55,8 @@
   .do-list a, .do-list li:first-child a { border-top: 3px solid var(--tone-2); border-bottom: 0; padding-top: 1.4rem; }
 }
 .do-trades { margin: 1.4rem 0 0; color: var(--muted); line-height: 1.7; max-width: 60ch; }
-.do-trades a { color: var(--fg); font-weight: 700; text-decoration: underline; text-decoration-color: var(--a); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.do-trades a { color: inherit; font-weight: inherit; text-decoration: none; }
+.do-trades a:hover, .do-trades a:focus-visible { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
 
 /* Sites we've built: a swipe row of screenshots */
 .sites { margin-top: 2.6rem; }
@@ -90,3 +91,12 @@
 /* Bigger tap targets */
 #results .rdots button { width: 44px; height: 44px; }
 #results .h2-link { padding: 12px 0 8px; }
+
+/* Live counter: quieter band (Josh 2026-11-25: "still looks kinda big") */
+.tracker { padding: 2.3rem 0 2.1rem; }
+.tracker-num { font-size: clamp(2rem, 4.6vw, 3.1rem); }
+.tracker-main small { font-size: 0.9rem; margin-top: 0.35rem; }
+.tracker-side b { font-size: clamp(1.15rem, 2vw, 1.6rem); }
+.tracker-side span { font-size: 0.8rem; }
+@media (min-width: 960px) { .tracker-grid { gap: 3.5rem; } }
+@media (max-width: 560px) { .tracker { padding: 1.9rem 0 1.7rem; } .tracker-num { font-size: 2rem; } .tracker-side b { font-size: 1.1rem; } .tracker-side span { font-size: 0.7rem; } }
