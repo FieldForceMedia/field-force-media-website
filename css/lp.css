@@ -47,16 +47,16 @@
 /* ---------- results: one card per client, swipe on phones ---------- */
 .rtrack { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 1.8rem -20px 0; padding: 4px 20px 6px; scroll-padding: 0 20px; }
 .rtrack::-webkit-scrollbar { display: none; }
-.rcard { flex: 0 0 84%; scroll-snap-align: start; background: #fff; color: #0A0A0A; padding: 1.4rem 1.4rem 1.3rem; display: flex; flex-direction: column; --cut: 14px; }
+.rcard { flex: 0 0 84%; scroll-snap-align: start; background: #F4F2EC; color: #0A0A0A; padding: 1.4rem 1.4rem 1.3rem; display: flex; flex-direction: column; --cut: 14px; }
 .rcard-logo { height: 54px; display: flex; align-items: center; margin-bottom: 1.1rem; }
-.rcard-logo img { max-height: 100%; max-width: 72%; width: auto; height: auto; display: block; }
+.rcard-logo img { max-height: 100%; max-width: 72%; width: auto; height: auto; display: block; mix-blend-mode: multiply; }
 .rcard-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; margin: 0; }
 .rcard-trade { color: rgba(10,10,10,0.6); font-size: 0.85rem; margin: 0.15rem 0 0; }
 .rcard-big { margin: 1.3rem 0 0; padding: 1.1rem 0 0; border-top: 3px solid var(--accent); }
 .rcard-big b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 3.6rem; line-height: 0.9; letter-spacing: -0.055em; color: var(--accent-d); font-variant-numeric: tabular-nums; }
 .rcard-big span { display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; margin-top: 0.45rem; }
 .rcard-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 1.2rem 0 0; }
-.rcard-stats div { background: #F4F2EC; padding: 0.7rem 0.8rem; }
+.rcard-stats div { background: transparent; padding: 0.7rem 0.8rem; }
 .rcard-stats dt { font-size: 0.74rem; font-weight: 700; color: rgba(10,10,10,0.6); }
 .rcard-stats dd { margin: 0.15rem 0 0; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(0.95rem, 4.2vw, 1.1rem); white-space: nowrap; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .rcard-stats dt { white-space: nowrap; }

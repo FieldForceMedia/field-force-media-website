@@ -101,8 +101,3 @@
 @media (min-width: 960px) { .tracker-grid { gap: 3.5rem; } }
 @media (max-width: 560px) { .tracker { padding: 1.9rem 0 1.7rem; } .tracker-num { font-size: 2rem; } .tracker-side b { font-size: 1.1rem; } .tracker-side span { font-size: 0.7rem; } }
 
-/* Results cards on the homepage: brand Paper instead of pure white (softer on the black page).
-   multiply drops the white background baked into some logo files (Island Scape). */
-.rcard { background: #F4F2EC; }
-.rcard-logo img { mix-blend-mode: multiply; }
-.rcard-stats div { background: transparent; } /* stat boxes: same color as the card (Josh 2026-11-25) */
