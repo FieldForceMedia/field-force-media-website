@@ -105,4 +105,4 @@
    multiply drops the white background baked into some logo files (Island Scape). */
 .rcard { background: #F4F2EC; }
 .rcard-logo img { mix-blend-mode: multiply; }
-.rcard-stats div { background: #fff; } /* stat boxes stay visible on the Paper card */
+.rcard-stats div { background: transparent; } /* stat boxes: same color as the card (Josh 2026-11-25) */
